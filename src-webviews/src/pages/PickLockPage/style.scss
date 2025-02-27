@@ -1,0 +1,274 @@
+#lockPick {
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    position: absolute;
+    z-index: 100;
+
+    body {
+        width: 100%;
+        height: 100%;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        caret-color: #00000000;
+        overflow: hidden;
+        user-select: none;
+    }
+    ::-webkit-scrollbar {
+        display: none;
+    }
+
+    #lock-container {
+        width: 400px;
+        height: 300px;
+        background-image: url('./images/lock.png');
+        background-size: cover;
+        margin: 0 auto;
+        border: 2px solid #000;
+        position: relative;
+        background-color: #ccc;
+        z-index: 1;
+        margin-top: 79.88px;
+    }
+
+    #hook {
+        position: absolute;
+        width: 827px;
+        height: 65px;
+        cursor: pointer;
+        z-index: 2;
+        filter: drop-shadow(3px 3px 2px #00000077);
+    }
+
+    #top {
+        position: relative;
+        background-image: url('./images/top2.png');
+        background-size: cover;
+        height: 37px;
+        width: 307px;
+        left: 0;
+        top: 50%;
+        transform: translate(4px, 11px);
+    }
+
+    #bottom {
+        position: relative;
+        background-image: url('./images/bottom2.png');
+        background-size: cover;
+        top: 0;
+        float: right;
+        height: 65px;
+        width: 542px;
+    }
+
+    #end {
+        position: absolute;
+        height: 30px;
+        width: 10px;
+        float: left;
+        top: 70%;
+        margin-left: 10px;
+    }
+
+    #tension-wrench {
+        position: absolute;
+        width: 65px;
+        height: 211px;
+        background-image: url('./images/wrench.png');
+        background-size: cover;
+        left: 380px;
+        top: 250px;
+        transform-origin: center 10px;
+        perspective: 100px;
+        filter: drop-shadow(3px 3px 2px #00000077);
+        transition-duration: 1s;
+    }
+
+    .rotate {
+        transform: rotateX(80deg);
+    }
+
+    #score {
+        margin-top: 20px;
+    }
+
+    .pin {
+        width: 20px;
+        height: 43px;
+        background-image: url('./images/pin.png');
+        background-size: cover;
+        position: relative;
+        transform-origin: center bottom;
+        filter: drop-shadow(2px 2px 1px #00000077);
+    }
+
+    .pin.correct {
+        transition-duration: 0.2s;
+        background: linear-gradient(green, green), url('./images/pin.png');
+        background-blend-mode: hue;
+        -webkit-mask-image: url('./images/pin.png');
+        mask-image: url('./images/pin.png');
+    }
+
+    .pin.incorrect {
+        background: linear-gradient(red, red), url('./images/pin.png');
+        background-blend-mode: hue;
+        -webkit-mask-image: url('./images/pin.png');
+        mask-image: url('./images/pin.png');
+        /* Start the shake animation and make the animation last for 0.5 seconds */
+        animation: shake 0.5s;
+        /* When the animation is finished, start again */
+        animation-iteration-count: infinite;
+    }
+
+    .shake {
+        /* Start the shake animation and make the animation last for 0.5 seconds */
+        animation: shake 0.5s;
+        /* When the animation is finished, start again */
+        animation-iteration-count: infinite;
+    }
+
+    @keyframes shake {
+        0% {
+            transform: translate(1px, 1px) rotate(0deg);
+        }
+
+        10% {
+            transform: translate(-1px, -2px) rotate(-1deg);
+        }
+
+        20% {
+            transform: translate(-3px, 0px) rotate(1deg);
+        }
+
+        30% {
+            transform: translate(3px, 2px) rotate(0deg);
+        }
+
+        40% {
+            transform: translate(1px, -1px) rotate(1deg);
+        }
+
+        50% {
+            transform: translate(-1px, 2px) rotate(-1deg);
+        }
+
+        60% {
+            transform: translate(-3px, 1px) rotate(0deg);
+        }
+
+        70% {
+            transform: translate(3px, 1px) rotate(-1deg);
+        }
+
+        80% {
+            transform: translate(-1px, -1px) rotate(1deg);
+        }
+
+        90% {
+            transform: translate(1px, 2px) rotate(0deg);
+        }
+
+        100% {
+            transform: translate(1px, -2px) rotate(-1deg);
+        }
+    }
+
+    .shake-small {
+        /* Start the shake animation and make the animation last for 0.5 seconds */
+        animation: shake-small 0.5s;
+        /* When the animation is finished, start again */
+        animation-iteration-count: infinite;
+    }
+
+    @keyframes shake-small {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        10% {
+            transform: rotate(-1deg);
+        }
+
+        20% {
+            transform: rotate(1deg);
+        }
+
+        30% {
+            transform: rotate(0deg);
+        }
+
+        40% {
+            transform: rotate(1deg);
+        }
+
+        50% {
+            transform: rotate(-1deg);
+        }
+
+        60% {
+            transform: rotate(0deg);
+        }
+
+        70% {
+            transform: rotate(-1deg);
+        }
+
+        80% {
+            transform: rotate(1deg);
+        }
+
+        90% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(-1deg);
+        }
+    }
+
+    .pin-container {
+        position: absolute;
+        transform-origin: center bottom;
+        transition-duration: 0.2s;
+    }
+
+    .pin-container:has(.pin.incorrect) {
+        transform: translateY(-40%) !important;
+    }
+
+    .pin-container:has(.pin.correct) {
+        top: 122px !important;
+    }
+
+    .pin-slide {
+        position: absolute;
+        height: 100%;
+        width: 22px;
+        background-color: #666;
+        z-index: -1;
+        pointer-events: none;
+        background-image: url('./images/slot.png');
+        background-size: cover;
+    }
+
+    .spring {
+        position: absolute;
+        top: 10px;
+        width: 20px;
+        height: 141px;
+        background-image: url('./images/spring.png');
+        background-size: cover;
+        transform-origin: center top;
+        transition-duration: 0.2s;
+    }
+
+    .pin-slide:has(.pin.correct) .spring {
+        transform: scaleY(0.778) !important;
+    }
+
+    .hide {
+        opacity: 0;
+    }
+}

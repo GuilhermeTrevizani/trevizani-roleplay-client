@@ -1,0 +1,18 @@
+[
+  {"drawable":-1,"dlc":null,"textures":1,"factionType":0},
+  {"drawable":0,"dlc":null,"textures":1,"factionType":0},
+  {"drawable":1,"dlc":null,"textures":1,"factionType":0},
+  {"drawable":2,"dlc":null,"textures":1,"factionType":0},
+  {"drawable":3,"dlc":null,"textures":1,"factionType":0},
+  {"drawable":4,"dlc":null,"textures":1,"factionType":0},
+  {"drawable":5,"dlc":null,"textures":1,"factionType":0},
+  {"drawable":6,"dlc":null,"textures":1,"factionType":0},
+  {"drawable":7,"dlc":null,"textures":4,"factionType":0},
+  {"drawable":8,"dlc":null,"textures":12,"factionType":0},
+  {"drawable":9,"dlc":null,"textures":3,"factionType":0},
+  {"drawable":10,"dlc":null,"textures":5,"factionType":0},
+  {"drawable":11,"dlc":null,"textures":5,"factionType":0},
+  {"drawable":12,"dlc":null,"textures":14,"factionType":0},
+  {"drawable":13,"dlc":null,"textures":6,"factionType":0},
+  {"drawable":16,"dlc":"mp_m_lscmale1;0","textures":1,"factionType":0}
+]

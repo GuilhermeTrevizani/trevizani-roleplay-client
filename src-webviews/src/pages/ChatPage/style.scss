@@ -1,0 +1,23 @@
+.chatPage {
+    margin: 0px;
+    height: 100vh;
+
+    *::-webkit-scrollbar {
+        visibility: hidden !important;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        visibility: hidden !important;
+    }
+
+    .commandSuggestion {
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        padding: 10px;
+        font-size: 13px;
+        font-family: Arial, Helvetica, sans-serif;
+        text-shadow: none;
+        font-weight: normal;
+        width: 90%;
+    }
+}

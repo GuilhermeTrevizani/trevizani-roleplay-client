@@ -1,0 +1,55 @@
+#deathPage {
+    font-size: 16px;
+
+    .page {
+        background-color: rgba(52, 58, 64, 0.85);
+        width: 400px;
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translate(-50%);
+        color: rgba(255, 255, 255, 0.9);
+        border-radius: 12px;
+    }
+
+    .header {
+        border-radius: 10px 10px 0px 0px;
+        background-color: rgba(28, 28, 28, 1);
+        text-align: center;
+        padding: 2px;
+        font-size: 17px;
+    }
+
+    .body {
+        padding: 10px;
+    }
+
+    .buttons {
+        display: flex;
+        bottom: 10px;
+        gap: 10px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .button {
+        flex: 1;
+        background-color: #8c3086;
+        cursor: pointer;
+        color: white;
+        border-radius: 5px;
+        padding: 10px 20px;
+        border: none;
+        outline: none;
+        margin-top: 20px;
+
+        &:hover {
+            background-color: #613673;
+        }
+
+        &:disabled {
+            background-color: #424242;
+            cursor: default;
+        }
+    }
+}

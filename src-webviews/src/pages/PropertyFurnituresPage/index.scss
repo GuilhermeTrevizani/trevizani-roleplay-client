@@ -1,0 +1,105 @@
+#propertyFurniture {
+    background-color: rgb(46, 46, 46, 0.85);
+    color: rgba(255, 255, 255, 0.9);
+    width: 20%;
+    height: 50%;
+    right: 10px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    *,
+    *::after,
+    *::before {
+        -webkit-user-select: none;
+        user-select: none;
+        -webkit-user-drag: none;
+        -webkit-app-region: no-drag;
+        cursor: default;
+    }
+
+    .header {
+        background-color: #1c1c1c;
+        text-align: center;
+        color: white;
+    }
+
+    .tabs {
+        padding: 5px;
+        display: flex;
+        width: 100%;
+
+        button {
+            flex: 1;
+            margin: 5px;
+            padding: 10px;
+            font-size: 1.3vh;
+            cursor: pointer;
+            border-radius: 5px;
+            outline: none;
+            color: white;
+            border: 0px;
+            background-color: #2e2e2e;
+
+            &:hover {
+                background-color: #9e9e9e;
+            }
+
+            &.active {
+                background-color: #8c3086;
+
+                &:hover {
+                    background-color: rgb(134, 76, 158);
+                }
+            }
+        }
+    }
+
+    input {
+        font-size: 1vh;
+        margin: 10px;
+        outline: none;
+    }
+
+    .title {
+        font-size: 2.2vh;
+        font-weight: bold;
+    }
+
+    .list {
+        flex-grow: 1;
+        font-size: 1.3vh;
+        overflow-y: auto;
+    }
+
+    table {
+        border-collapse: separate;
+        border-spacing: 5px 2px;
+
+        button {
+            border: 0px;
+            width: 35px;
+            padding: 5px;
+            font-size: 1.3vh;
+            cursor: pointer;
+            border-radius: 5px;
+            outline: none;
+            color: white;
+            border: 0px;
+            background-color: #2e2e2e;
+
+            &:hover {
+                background-color: #9e9e9e;
+            }
+        }
+    }
+
+    .price {
+        color: #4fd154;
+        text-align: right;
+    }
+}

@@ -1,0 +1,350 @@
+#inventoryPage {
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    position: absolute;
+    z-index: 100;
+
+    @mixin scrollbar() {
+        &::-webkit-scrollbar {
+            height: 18px;
+        }
+        &::-webkit-scrollbar-thumb {
+            height: 6px;
+            border: 4px solid rgba(0, 0, 0, 0);
+            background-clip: padding-box;
+            border-radius: 7px;
+            background-color: #000;
+            box-shadow: inset -1px -1px 0px rgba(0, 0, 0, 0.05), inset 1px 1px 0px rgba(0, 0, 0, 0.05);
+        }
+        &::-webkit-scrollbar-button {
+            width: 0;
+            height: 0;
+            display: none;
+        }
+        &::-webkit-scrollbar-corner {
+            background-color: transparent;
+        }
+    }
+
+    #root {
+        background-color: transparent !important;
+        user-select: none;
+    }
+
+    .mainContainer {
+        display: flex;
+        width: 100vw;
+        height: 100vh;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    .subContainer {
+        display: flex;
+        padding: 25px;
+        gap: 15px;
+        max-height: 80%;
+    }
+
+    .inventoryCard {
+        background-color: rgba(#000000, 0.8);
+        width: 100%;
+        padding: 10px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .inventoryCardTitle {
+        color: white;
+        font-weight: bold;
+    }
+
+    .titleLine {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .weightContainer {
+    }
+    .weightTextContainer {
+        text-align: end;
+    }
+    .weightText {
+        color: white;
+        font-weight: 200;
+        &.bold {
+            font-weight: bold;
+        }
+    }
+
+    .wheightIndicator {
+        width: 100%;
+        border-radius: 5px;
+        margin-top: 5px;
+        .inner {
+            padding: 4px;
+            border-radius: 5px;
+        }
+    }
+    .inventoryItems {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 2px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        @include scrollbar();
+    }
+
+    .inventoryItemWrapper {
+        height: 140px;
+        background-color: rgba(gray, 0.1);
+        width: 100px;
+        position: relative;
+    }
+
+    .inventoryItem {
+        max-width: 100px;
+        background-color: rgba(gray, 0.1);
+        border-radius: 3px;
+        position: relative;
+
+        &.using {
+            background-color: gray;
+        }
+
+        &.void {
+            min-height: 140px;
+        }
+
+        .inventoryItemTop {
+            color: white;
+            display: flex;
+            gap: 4px;
+            flex-direction: column;
+            padding: 10px;
+            align-items: center;
+
+            span {
+                width: 100%;
+                text-align: end;
+            }
+        }
+
+        .inventoryItemBottom {
+            background-color: #262626;
+            color: white;
+            text-align: center;
+            border-bottom-left-radius: 3px;
+            border-bottom-right-radius: 3px;
+            display: flex;
+
+            span {
+                display: inline-block;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+                flex-shrink: 0;
+                width: 100%;
+                padding-left: 2px;
+                padding-right: 2px;
+            }
+        }
+    }
+
+    .inventoryItemImage {
+        width: 80px;
+        height: 80px;
+    }
+
+    .centerSpace {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        gap: 25px;
+        align-items: center;
+    }
+
+    .centerSpaceInner {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .centerOptionLg {
+        margin: 0px auto;
+        background-color: rgba(#000000, 0.8);
+        color: white;
+        width: 85%;
+        padding: 15px 0;
+        border-radius: 4px;
+        text-align: center;
+    }
+
+    .centerOptionMd {
+        margin: 0 auto;
+        background-color: rgba(#000000, 0.8);
+        color: white;
+        width: 70%;
+        padding: 10px 0;
+        border-radius: 4px;
+        text-align: center;
+        border: none;
+    }
+
+    .centerOptionSm {
+        margin: 0 auto;
+        background-color: rgba(#000000, 0.8);
+        color: white;
+        width: 40%;
+        padding: 10px;
+        border-radius: 4px;
+        text-align: center;
+    }
+
+    .centerOptionDescription {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        color: white;
+    }
+
+    .dropHere {
+        background-color: #000000;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+    }
+
+    .qtdInput {
+        width: 50%;
+        padding: 0;
+        text-align: center;
+        background-color: transparent;
+        border: none;
+        color: white;
+        outline: none;
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    .modalWrapper {
+        left: 0;
+        top: 0;
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        background-color: black;
+        background-color: rgba(#000000, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .modalCard {
+        position: relative;
+        background-color: black;
+        border-radius: 8px;
+    }
+
+    .modalTop {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        min-width: 400px;
+        color: white;
+    }
+
+    .modalBody {
+        padding: 10px;
+    }
+
+    .modalCharacterList {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .characterSelectItem {
+        display: flex;
+        align-items: center;
+        padding: 10px 5px;
+        color: white;
+        gap: 5px;
+    }
+
+    .characterSelectItemContent {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .modalBottom {
+        padding: 10px;
+        .buttons {
+            text-align: right;
+            display: flex;
+            gap: 5px;
+            justify-content: flex-end;
+
+            button {
+                background-color: white;
+                color: black;
+                padding: 8px;
+                border-radius: 4px;
+                text-align: center;
+                border: none;
+                transition: all 0.2s;
+
+                &:hover {
+                    opacity: 0.9;
+                }
+
+                &:disabled {
+                    opacity: 0.5;
+                }
+            }
+        }
+    }
+
+    @media (max-width: 1280px) {
+        .inventoryItemWrapper {
+            width: 80px;
+            height: 100px;
+        }
+        .inventoryItemImage {
+            width: 40px;
+            height: 40px;
+        }
+
+        .inventoryItems {
+            grid-template-columns: repeat(5, 1fr);
+        }
+    }
+
+    @media (max-width: 1030px) {
+        .inventoryItems {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+
+    @media (max-width: 900px) {
+        .inventoryItemWrapper {
+            width: 70px;
+            height: 95px;
+        }
+        .inventoryItemImage {
+            width: 35px;
+            height: 35px;
+        }
+    }
+}

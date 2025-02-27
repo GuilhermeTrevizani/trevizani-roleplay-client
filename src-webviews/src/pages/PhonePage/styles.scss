@@ -1,0 +1,2833 @@
+#phonePage {
+    user-select: none;
+
+    .slideUp {
+        animation: slideUp-phone 1s;
+    }
+
+    .slideDown {
+        animation: slideDown-phone 1s;
+        animation-fill-mode: forwards;
+    }
+
+    .fadeOut {
+        animation: fade-out1 0.5s forwards;
+    }
+
+    .flexgrow {
+        flex-grow: 1;
+    }
+
+    .phoneContainer {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        margin-right: 1vw;
+        margin-bottom: 1vh;
+
+        //4k
+        height: 1400px;
+        width: 760px;
+
+        .screen {
+            // transition: background-color 10ms linear;
+            background-size: cover !important;
+            top: 0;
+            padding: 4%;
+            margin: 2px;
+            z-index: 999999;
+            display: flex;
+            flex-direction: column;
+            //4k
+            border-radius: calc(8.5em);
+            height: 1400px;
+            width: 755px;
+
+            &.screenBlack {
+                background: black !important;
+            }
+
+            &.screenContactBg {
+                background: linear-gradient(rgb(72, 75, 82) 0%, rgb(41, 41, 51) 40%, black 40%, black 100%) !important;
+            }
+
+            * {
+                z-index: 99999;
+            }
+
+            .bottomBar {
+                height: 20px;
+                flex-grow: 1;
+                display: flex;
+                justify-content: center;
+                align-items: flex-end;
+
+                .mainbar {
+                    width: 50%;
+                    height: 15px;
+                    background-color: rgb(64, 64, 64);
+                    border-radius: 20px;
+
+                    &:hover {
+                        opacity: 0.7;
+                    }
+                }
+            }
+        }
+
+        .shape {
+            top: 0;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+
+        .notificationBar {
+            display: flex;
+            flex-direction: row;
+            min-height: 100px;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+
+            .notch {
+                flex-grow: 1;
+                background-color: black;
+                height: 54px;
+                border-radius: calc(2em);
+                display: flex;
+                width: 100%;
+                color: white;
+                align-items: center;
+                padding: 1%;
+                font-size: 1vh;
+                justify-content: space-between;
+                min-width: 214px;
+
+                .camera {
+                    flex-grow: 1;
+                    height: 60px;
+                    width: 100%;
+                }
+            }
+
+            .notificationItem {
+                flex-grow: 1;
+                display: flex;
+                align-items: center;
+                width: 100%;
+                font-size: 1.5vh;
+
+                &.right {
+                    padding-right: 2vh;
+                    justify-content: flex-end;
+                }
+
+                &.center {
+                    justify-content: center;
+                }
+            }
+        }
+    }
+
+    .lockScreen {
+        display: flex;
+        flex-direction: column;
+
+        width: 100%;
+        height: 100%;
+
+        .lockScreenTop {
+            display: flex;
+            align-items: center;
+            padding-top: 100px;
+            color: white;
+            flex-direction: column;
+
+            .lockScreenClockText {
+                font-size: 1100%;
+            }
+
+            .lockScreenDateText {
+                font-size: 300%;
+            }
+        }
+
+        .lockScreenBottom {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            color: white;
+            flex-direction: column;
+
+            .lockScreenUnlockButton {
+                gap: 15px;
+                animation: unlock-bounce 2s infinite;
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                align-items: center;
+                margin-bottom: 10px;
+
+                .lockScreenUnlockText {
+                    font-size: 250%;
+                    cursor: pointer;
+                }
+
+                .unlockBar {
+                    padding: 5px;
+                    background-color: white;
+                    width: 50%;
+                    border-radius: calc(1rem);
+                }
+            }
+        }
+    }
+
+    .passcodeScreen {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+
+        .passcodeScreenMainContainer {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            gap: 20px;
+
+            .passcodeScreenMainText {
+                color: white;
+                font-size: 360%;
+            }
+
+            .passcodeScreenPassContainer {
+                display: flex;
+                width: 25%;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+
+                &.bounce {
+                    animation: passcode-bounce 0.5s;
+                }
+
+                .passcodeScreenPassItem {
+                    border: 2px white solid;
+                    padding: 10px;
+                    border-radius: 50%;
+
+                    &.active {
+                        background-color: white;
+                    }
+                }
+            }
+
+            .passcodeScreenNumbersContainer {
+                margin-top: 10px;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                align-items: center;
+
+                .passcodeScreenNumbersRow {
+                    width: 60%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-around;
+
+                    .passcodeScreenNumber {
+                        background-color: gray;
+                        border-radius: 50%;
+                        color: white;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+
+                        font-size: 350%;
+                        width: 100px;
+                        height: 100px;
+
+                        &.outlined {
+                            background-color: transparent;
+                        }
+
+                        &.transparent {
+                            opacity: 0;
+
+                            &:hover {
+                                opacity: 0 !important;
+                            }
+                        }
+
+                        &:hover {
+                            opacity: 0.7;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .homeScreen {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+
+        .homeScreenMenuItem {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            &:hover {
+                opacity: 0.7;
+            }
+
+            span {
+                color: white;
+                font-size: 200%;
+            }
+
+            img {
+                width: 120px;
+            }
+        }
+
+        .homeScreenMenu {
+            flex-grow: 1;
+        }
+
+        .homeScreenBottom {
+            .homeScreenBottomMenu {
+                padding: 30px;
+                background-color: rgba(42, 41, 41, 0.301);
+                backdrop-filter: blur(20px);
+                border-radius: 25px;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-around;
+                margin: 20px;
+            }
+        }
+    }
+
+    .settingsScreen {
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+
+        .settingsScreenTitle {
+            color: white;
+            font-size: 450%;
+        }
+
+        .settingsScreenMenuSection {
+            background-color: rgb(28, 28, 30);
+            border-radius: 10px;
+            padding: 10px 20px;
+            margin-top: 20px;
+            color: white;
+            font-size: 300%;
+
+            .settingsScreenMenuItem {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+
+                &:hover {
+                    .settingsScreenMenuItemStart {
+                        opacity: 0.6;
+                    }
+                }
+
+                .settingsScreenMenuItemStart {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    gap: 20px;
+
+                    .settingsScreenMenuItemIcon {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        // padding: 5px;
+                        border-radius: 5px;
+                        width: 38px;
+                        height: 38px;
+
+                        &.settingsScreenMenuItemAirPlaneModeIcon {
+                            background-color: rgb(255, 159, 10);
+                        }
+
+                        &.settingsScreenMenuItemPhoneIcon {
+                            background-color: rgb(48, 209, 88);
+                        }
+
+                        &.settingsScreenMenuSoundsIcon {
+                            background-color: rgb(255, 55, 95);
+                        }
+
+                        &.settingsScreenMenuWallpaperIcon {
+                            background-color: rgb(46, 176, 228);
+                        }
+
+                        &.settingsScreenMenuDisplayIcon {
+                            background-color: rgb(0, 123, 255);
+                        }
+
+                        &.settingsScreenMenuPasscodeIcon {
+                            background-color: rgb(50, 203, 87);
+                        }
+
+                        &.settingsScreenMenuScaleIcon {
+                        }
+                    }
+                }
+
+                .settingsScreenMenuItemCheckbox {
+                    background-color: rgb(57, 57, 61);
+                    width: 80px;
+                    border-radius: 20px;
+                    display: flex;
+
+                    &.inactive {
+                        transition: all 0.3s;
+
+                        &::before {
+                            transition: inherit;
+                            content: '';
+                            width: 0;
+                        }
+
+                        &::after {
+                            transition: inherit;
+                            content: '';
+                            width: 100%;
+                        }
+
+                        justify-content: start;
+                    }
+
+                    &.active {
+                        transition: all 0.3s;
+
+                        &::before {
+                            transition: inherit;
+                            content: '';
+                            width: 100%;
+                        }
+
+                        &::after {
+                            transition: inherit;
+                            content: '';
+                            width: 0;
+                        }
+
+                        background-color: #4bd764;
+                        justify-content: end;
+                    }
+
+                    .settingsScreenMenuItemCheckboxToggle {
+                        transition: all 0.2s;
+                        right: 0;
+                        background-color: white;
+                        border-radius: 20px;
+                        padding: 20px;
+                        width: 40px;
+                        height: 40px;
+
+                        &:hover {
+                            width: 60px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .settingsScreenSounds {
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+
+        .settingsScreenSoundsTop {
+            color: white;
+            display: flex;
+            font-size: 300%;
+
+            div {
+                flex-grow: 1;
+            }
+
+            .settingsScreenSoundsTopBackButton {
+                color: rgb(0, 122, 255);
+
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
+
+            .settingsScreenSoundsTopTitle {
+            }
+        }
+
+        .settingsScreenSoundsBody {
+            color: white;
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+
+            .settingsScreenSoundsSection {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+
+                .settingsScreenSoundsSectionTitle {
+                    font-size: 250%;
+                    color: gray;
+                }
+
+                .settingsScreenSoundsSectionData {
+                    background-color: rgb(28, 28, 30);
+                    border-radius: 10px;
+                    padding: 10px 20px;
+                    color: white;
+                    display: flex;
+                    gap: 25px;
+
+                    svg {
+                        color: gray;
+                        width: 45px;
+                        height: 40px;
+                    }
+
+                    input[type='range'] {
+                        flex-grow: 1;
+                        -webkit-appearance: none;
+                        appearance: none;
+                        background-color: transparent;
+                    }
+
+                    input[type='range']::-webkit-slider-runnable-track {
+                        background-color: rgb(0, 122, 255);
+                        height: 10px;
+                        border-radius: 8px;
+                    }
+
+                    input[type='range']::-webkit-slider-thumb {
+                        -webkit-appearance: none;
+                        /* Override default look */
+                        appearance: none;
+
+                        /*custom styles*/
+                        margin-top: -15px;
+                        background-color: white;
+                        height: 40px;
+                        width: 40px;
+                        border-radius: 50%;
+                    }
+                }
+            }
+        }
+    }
+
+    .settingsScreenWallpaper {
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+
+        .settingsScreenWallpaperTop {
+            color: white;
+            display: flex;
+            font-size: 300%;
+
+            div {
+                flex-grow: 1;
+            }
+
+            .settingsScreenWallpaperTopBackButton {
+                color: rgb(0, 122, 255);
+
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
+        }
+
+        .settingsScreenWallpaperBody {
+            color: white;
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+
+            .settingsScreenWallpaperSection {
+                background-color: rgb(28, 28, 30);
+                border-radius: 10px;
+                padding: 10px 20px;
+                color: white;
+
+                .settingsScreenWallpaperImageContainer {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 10px;
+
+                    span {
+                        font-size: 300%;
+                        color: gray;
+                    }
+
+                    img {
+                        border-radius: 20px;
+                        height: 600px;
+                        width: 330px;
+
+                        object-fit: cover;
+                    }
+                }
+
+                .settingsScreenWallpaperSetImage {
+                    display: flex;
+                    gap: 10px;
+                    margin-top: 20px;
+
+                    input {
+                        height: 50px;
+                        font-size: 200%;
+                        padding: 10px;
+                        border-radius: 15px;
+                        flex-grow: 1;
+
+                        &:focus {
+                            border: 2px solid #1677ff;
+                            outline: 0;
+                        }
+                    }
+
+                    .settingsScreenWallpaperSetImageButton {
+                        background-color: #1677ff;
+                        display: flex;
+                        justify-content: center;
+                        height: 50px;
+                        width: 50px;
+                        border-radius: 50%;
+
+                        &:hover {
+                            opacity: 0.8;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .settingsScreenpassword {
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+
+        .settingsScreenpasswordTop {
+            color: white;
+            display: flex;
+            font-size: 300%;
+
+            div {
+                flex-grow: 1;
+            }
+
+            .settingsScreenpasswordTopBackButton {
+                color: rgb(0, 122, 255);
+
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
+        }
+
+        .settingsScreenpasswordBody {
+            margin-top: 20px;
+
+            .settingsScreenpasswordSection {
+                background-color: rgb(28, 28, 30);
+                border-radius: 10px;
+                color: white;
+
+                .settingsScreenpasswordSectionItem {
+                    padding: 20px;
+                    font-size: 250%;
+                    color: rgb(0, 122, 255);
+                    font-weight: 300;
+
+                    &:hover {
+                        opacity: 0.8;
+                    }
+                }
+
+                hr {
+                    margin: 0;
+                }
+            }
+        }
+    }
+
+    .settingsScreenpasswordNew {
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+
+        .settingsScreenpasswordNewTop {
+            color: white;
+            display: flex;
+            font-size: 300%;
+
+            div {
+                flex-grow: 1;
+            }
+
+            .settingsScreenpasswordNewTopBackButton {
+                color: rgb(0, 122, 255);
+
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
+        }
+
+        .settingsScreenpasswordNewBody {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+
+            .settingsScreenpasswordNewPasswordContainer {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                color: white;
+                gap: 40px;
+
+                .settingsScreenpasswordNewPasswordIndicator {
+                    display: flex;
+                    gap: 25px;
+
+                    div {
+                        border: 2px solid white;
+                        padding: 15px;
+                        border-radius: 50%;
+
+                        &.active {
+                            background-color: white;
+                        }
+                    }
+                }
+
+                .settingsScreenpasswordNewPasswordKeyboardContainer {
+                    font-size: 350%;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 15px;
+
+                    .settingsScreenpasswordNewPasswordKeyboardRow {
+                        display: flex;
+                        gap: 15px;
+
+                        .settingsScreenpasswordNewPasswordKeyboardNumber {
+                            padding: 20px;
+                            background-color: gray;
+                            height: 120px;
+                            width: 120px;
+                            border-radius: 50%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+
+                            &.transparent {
+                                background-color: transparent;
+                            }
+
+                            &:hover {
+                                opacity: 0.6;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .messagesScreen {
+        width: 100%;
+        height: 90%;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+
+        .messagesScreenHeader {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            position: relative;
+
+            .messagesScreenHeaderNewChat {
+                font-size: 55px;
+                color: rgb(0, 122, 255);
+                position: absolute;
+                right: 0;
+
+                &:hover {
+                    opacity: 0.7;
+                }
+            }
+
+            .messagesScreenTitle {
+                flex-grow: 1;
+                text-align: center;
+                color: white;
+                font-size: 45px;
+            }
+        }
+
+        .messagesScreenBody {
+            overflow: auto;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+
+            .messagesScreenSearchInput {
+                width: 100%;
+                padding: 15px;
+                border-radius: 20px;
+                font-size: 30px;
+                background-color: rgb(28, 28, 30);
+                display: flex;
+                align-items: center;
+                gap: 20px;
+
+                svg {
+                    color: rgb(142, 141, 145);
+                }
+
+                input {
+                    flex-grow: 1;
+                    color: white;
+                    background-color: transparent;
+                    border: none;
+
+                    &:focus-visible {
+                        border: none !important;
+                        outline: none !important;
+                    }
+                }
+            }
+
+            .messagesScreenList {
+                display: flex;
+                gap: 20px;
+                flex-direction: column;
+                margin-top: 20px;
+                flex-grow: 1;
+
+                .messagesScreenMessageItem {
+                    display: flex;
+                    align-items: center;
+                    gap: 30px;
+
+                    .messagesScreenMessageItemIcon {
+                        background-color: rgb(58, 58, 58);
+                        color: rgb(142, 141, 145);
+                        padding: 30px;
+                        border-radius: 50%;
+                        font-size: 40px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+
+                    .messagesScreenMessageItemData {
+                        flex-grow: 1;
+                        width: 1%;
+
+                        .messagesScreenMessageItemDataTitle {
+                            display: flex;
+                            align-items: center;
+                            gap: 25px;
+
+                            .messagesScreenMessageItemUnread {
+                                padding: 10px;
+                                border-radius: 50%;
+                                background-color: #259dd9;
+                            }
+
+                            .messagesScreenMessageItemTitle {
+                                color: white;
+                                font-size: 40px;
+
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                                overflow: hidden;
+                            }
+                        }
+
+                        .messagesScreenMessageItemInfo {
+                            display: flex;
+                            flex-direction: column;
+                            color: rgb(142, 141, 145);
+                            font-size: 34px;
+
+                            span {
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                                overflow: hidden;
+                            }
+                        }
+                    }
+
+                    &:hover {
+                        opacity: 0.8;
+                    }
+                }
+            }
+        }
+    }
+
+    .newmessageOptionsScreen {
+        width: 100%;
+        height: 90%;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+
+        .newmessageOptionsScreenHeader {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+
+            .newmessageOptionsScreenBackButton {
+                display: flex;
+                align-items: center;
+
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
+
+            span {
+                flex-grow: 1;
+                color: white;
+                font-size: 40px;
+            }
+        }
+
+        .newMessageOptionsScreenBody {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            gap: 15px;
+
+            .newmessageOptionsScreenSearch {
+                .newmessageOptionsScreenSearchInput {
+                    color: white;
+                    display: flex;
+                    align-items: center;
+                    background-color: rgb(28, 28, 30);
+                    border-radius: 20px;
+                    padding: 15px;
+                    font-size: 30px;
+
+                    input {
+                        background-color: transparent;
+                        width: 100%;
+                        font-size: 30px;
+                        flex-grow: 1;
+                        color: white;
+                        border: none;
+
+                        &:focus-visible {
+                            border: none !important;
+                            outline: none !important;
+                        }
+                    }
+                }
+
+                .newmessageOptionsScreenSearchResult {
+                    padding: 10px;
+                    background-color: rgb(28, 28, 30);
+                    margin-top: 10px;
+                    color: white;
+                    display: flex;
+                    flex-direction: column;
+                    border-radius: 8px;
+                    max-height: 350px;
+                    overflow: auto;
+
+                    &::-webkit-scrollbar {
+                        display: none;
+                    }
+
+                    .newmessageOptionsScreenSearchResultItem {
+                        font-size: 30px;
+                        display: flex;
+                        align-items: center;
+                        gap: 20px;
+                        padding: 20px;
+
+                        &:hover {
+                            background-color: rgb(58 58 58 / 74%);
+                        }
+                    }
+
+                    .newmessageOptionsScreenSearchResultItemImage {
+                        background-color: rgb(58, 58, 58);
+                        color: rgb(142, 141, 145);
+                        padding: 20px;
+                        border-radius: 50%;
+                        font-size: 40px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                }
+            }
+
+            .newMessageOptionsScreenSection {
+                background-color: rgb(28, 28, 30);
+                border-radius: 10px;
+
+                hr {
+                    color: white;
+                    margin: 0;
+                }
+
+                .newMessageOptionsScreenSectionOption {
+                    padding: 15px;
+                    font-size: 30px;
+
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    gap: 25px;
+
+                    color: white;
+
+                    &:hover {
+                        opacity: 0.8;
+                    }
+                }
+            }
+
+            .newMessageOptionsScreenContactList {
+                padding: 10px;
+                background-color: rgb(28, 28, 30);
+                color: white;
+                display: flex;
+                flex-direction: column;
+                border-radius: 8px;
+                max-height: 800px;
+                overflow: auto;
+
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+
+                .newMessageOptionsScreenContactListItem {
+                    font-size: 30px;
+                    display: flex;
+                    align-items: center;
+                    gap: 20px;
+                    padding: 20px;
+
+                    &:hover {
+                        background-color: rgb(58 58 58 / 74%);
+                    }
+                }
+
+                .newMessageOptionsScreenContactListItemImage {
+                    background-color: rgb(58, 58, 58);
+                    color: rgb(142, 141, 145);
+                    padding: 20px;
+                    border-radius: 50%;
+                    font-size: 40px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+        }
+    }
+
+    .newmessageScreen {
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+
+        .newmessageScreenHeader {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+
+            .newmessageScreenBackButton {
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
+
+            span {
+                flex-grow: 1;
+                color: white;
+                font-size: 40px;
+            }
+        }
+
+        .newmessageScreenBody {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+
+            .newmessageScreenSelectedContacts {
+                display: flex;
+                color: white;
+                font-size: 30px;
+                gap: 15px;
+                margin-bottom: 10px;
+                flex-wrap: wrap;
+                justify-content: center;
+
+                .newmessageScreenSelectedContactItem {
+                    background-color: rgb(28, 28, 30);
+                    padding: 10px;
+                    border-radius: 20px;
+                    display: flex;
+                    align-items: center;
+                    gap: 15px;
+
+                    &:hover {
+                        background-color: rgb(38, 38, 39);
+                    }
+                }
+            }
+
+            .newmessageScreenGroupName {
+                margin-top: 15px;
+                .newmessageScreenGroupNameInput {
+                    color: white;
+                    display: flex;
+                    align-items: center;
+                    background-color: rgb(28, 28, 30);
+                    border-radius: 20px;
+                    padding: 15px;
+                    font-size: 30px;
+
+                    input {
+                        background-color: transparent;
+                        width: 100%;
+                        font-size: 30px;
+                        flex-grow: 1;
+                        color: white;
+                        border: none;
+
+                        &:focus-visible {
+                            border: none !important;
+                            outline: none !important;
+                        }
+                    }
+                }
+            }
+
+            .newmessageScreenSearch {
+                .newmessageScreenSearchInput {
+                    color: white;
+                    display: flex;
+                    align-items: center;
+                    background-color: rgb(28, 28, 30);
+                    border-radius: 20px;
+                    padding: 15px;
+                    font-size: 30px;
+
+                    input {
+                        background-color: transparent;
+                        width: 100%;
+                        font-size: 30px;
+                        flex-grow: 1;
+                        color: white;
+                        border: none;
+
+                        &:focus-visible {
+                            border: none !important;
+                            outline: none !important;
+                        }
+                    }
+                }
+
+                .newmessageScreenSearchResult {
+                    padding: 10px;
+                    background-color: rgb(28, 28, 30);
+                    margin-top: 10px;
+                    color: white;
+                    display: flex;
+                    flex-direction: column;
+                    border-radius: 8px;
+                    max-height: 350px;
+                    overflow: auto;
+
+                    &::-webkit-scrollbar {
+                        display: none;
+                    }
+
+                    .newmessageScreenSearchResultItem {
+                        font-size: 30px;
+                        display: flex;
+                        align-items: center;
+                        gap: 20px;
+                        padding: 20px;
+
+                        &:hover {
+                            background-color: rgb(58 58 58 / 74%);
+                        }
+                    }
+
+                    .newmessageScreenSearchResultItemImage {
+                        background-color: rgb(58, 58, 58);
+                        color: rgb(142, 141, 145);
+                        padding: 20px;
+                        border-radius: 50%;
+                        font-size: 40px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                }
+            }
+
+            .newMessageBottom {
+                display: flex;
+                width: 100%;
+                align-items: center;
+                gap: 15px;
+
+                .newMessageSendButton {
+                    flex-grow: 1;
+                    color: white;
+                    font-size: 30px;
+                    padding: 10px;
+                    background-color: rgb(53, 199, 92);
+                    border-radius: 10px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    &:hover {
+                        opacity: 0.8;
+                    }
+                }
+            }
+        }
+    }
+
+    .messageChatScreen {
+        width: 100%;
+        height: 90%;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+
+        .messageChatScreenHeader {
+            display: flex;
+            align-items: center;
+
+            .messageChatScreenBackButton {
+                padding: 15px;
+                font-size: 40px;
+                color: white;
+
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
+
+            .messageChatScreenIntegrants {
+                color: white;
+                font-size: 35px;
+                display: flex;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+                gap: 10px;
+            }
+
+            .messageChatScreenMore {
+                color: white;
+                padding: 10px;
+                font-size: 30px;
+
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
+
+            .messageChatScreenIcon {
+                font-size: 40px;
+                padding: 20px;
+                background-color: rgb(58, 58, 58);
+                color: rgb(142, 141, 145);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-right: 5px;
+            }
+        }
+
+        .messageChatScreenMessages {
+            display: flex;
+            flex-direction: column-reverse;
+            color: white;
+            gap: 25px;
+            overflow: auto;
+            height: 100%;
+            align-items: center;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+
+            .messageChatScreenMessage {
+                display: flex;
+                font-size: 30px;
+                align-items: center;
+                gap: 20px;
+                width: 100%;
+
+                &.me {
+                    justify-content: flex-end;
+                }
+
+                .messageChatScreenMessageIcon {
+                    font-size: 40px;
+                    padding: 20px;
+                    background-color: rgb(58, 58, 58);
+                    color: rgb(142, 141, 145);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                .messageChatScreenMessageInfo {
+                    background-color: rgb(58, 58, 58);
+                    padding: 20px;
+                    display: flex;
+                    flex-direction: column;
+                    border-radius: 20px;
+                    max-width: 70%;
+
+                    &.me {
+                        background-color: #1677ff;
+                    }
+                }
+            }
+        }
+
+        .messageChatScreenSendMessage {
+            display: flex;
+
+            input {
+                background-color: rgb(28, 28, 30);
+                font-size: 30px;
+                flex-grow: 1;
+                color: white;
+                border: none;
+                border-radius: 20px 0px 0px 20px;
+                padding: 15px;
+                font-size: 30px;
+
+                &:focus-visible {
+                    border: none !important;
+                    outline: none !important;
+                }
+            }
+
+            .messageChatScreenSendLocationButton {
+                color: white;
+                font-size: 30px;
+                margin-right: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
+
+            .messageChatScreenSendMessageButton {
+                color: white;
+                font-size: 30px;
+                padding: 10px;
+                background-color: rgb(53, 199, 92);
+                border-radius: 0px 20px 20px 0px;
+                width: 90px;
+                height: 90px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
+        }
+    }
+
+    .messageChatDetailScreen {
+        width: 100%;
+        height: 90%;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+
+        .messageChatDetailScreenHeader {
+            display: flex;
+            color: white;
+            font-size: 35px;
+            align-items: center;
+            position: relative;
+
+            .messageChatDetailScreenBackButton {
+                z-index: 999;
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
+
+            .messageChatDetailScreenPageTitle {
+                position: absolute;
+                width: 100%;
+                text-align: center;
+                z-index: 0;
+            }
+        }
+
+        .messageChatDetailScreenBody {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+
+            .messageChatDetailScreenGroupDetail {
+                margin-top: 45px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                color: white;
+                gap: 25px;
+
+                .messageChatDetailScreenGroupDetailPicture {
+                    padding: 40px;
+                    background-color: rgb(58, 58, 58);
+                    font-size: 35px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 50%;
+                }
+
+                .messageChatDetailScreenGroupDetailName {
+                    font-size: 35px;
+
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                }
+            }
+
+            .messageChatDetailScreenOptions {
+                .messageChatDetailScreenOption {
+                    background-color: rgb(58, 58, 58);
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+
+                    font-size: 30px;
+                    border-radius: 20px;
+                    padding: 10px;
+                    color: white;
+
+                    &.danger {
+                        color: red;
+                    }
+
+                    &:hover {
+                        opacity: 0.8;
+                    }
+                }
+            }
+
+            .messageChatDetailScreenParticipantList {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                overflow: auto;
+                max-height: 700px;
+
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+
+                .messageChatDetailScreenParticipant {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    gap: 20px;
+
+                    .messageChatDetailScreenParticipantPicture {
+                        color: white;
+                        background-color: rgb(58, 58, 58);
+                        font-size: 30px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        padding: 20px;
+                        border-radius: 50%;
+                    }
+
+                    .messageChatDetailScreenParticipantName {
+                        font-size: 30px;
+                        color: white;
+                        flex-grow: 1;
+                    }
+
+                    .messageChatDetailScreenParticipantOptions {
+                        display: flex;
+                        flex-direction: row;
+                        gap: 10px;
+
+                        .messageChatDetailScreenParticipantOption {
+                            color: white;
+                            font-size: 30px;
+
+                            &.danger {
+                                color: red;
+                            }
+
+                            &:hover {
+                                opacity: 0.8;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .phoneScreen {
+        display: flex;
+        flex-direction: column;
+        height: 90%;
+
+        .phoneScreenHeader {
+            color: white;
+            font-size: 55px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .phoneScreenHeaderAddButton {
+                font-size: 40px;
+
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
+        }
+
+        .phoneScreenBody {
+            color: white;
+            flex-grow: 1;
+            overflow: auto;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+
+            hr {
+                margin: 0;
+            }
+
+            &.calls {
+                .phoneScreenCall {
+                    padding: 10px;
+                    font-size: 35px;
+                    display: flex;
+                    justify-content: space-between;
+
+                    &:hover {
+                        background-color: rgb(20, 20, 20);
+                    }
+
+                    .phoneScreenCallInfo {
+                        display: flex;
+                        gap: 10px;
+                        align-items: center;
+
+                        &.end {
+                            span {
+                                color: rgb(115, 115, 115);
+                            }
+
+                            .phoneScreenCallInfoButton {
+                                font-size: 45px;
+
+                                &:hover {
+                                    opacity: 0.8;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.contacts {
+                .phoneScreenContactsSearchInput {
+                    color: white;
+                    display: flex;
+                    align-items: center;
+                    background-color: rgb(28, 28, 30);
+                    border-radius: 20px;
+                    padding: 10px;
+                    font-size: 30px;
+                    gap: 20px;
+                    margin-bottom: 20px;
+
+                    input {
+                        background-color: transparent;
+                        width: 100%;
+                        font-size: 30px;
+                        flex-grow: 1;
+                        color: white;
+                        border: none;
+
+                        &:focus-visible {
+                            border: none !important;
+                            outline: none !important;
+                        }
+                    }
+                }
+
+                .phoneScreenContact {
+                    padding: 10px;
+                    font-size: 35px;
+
+                    &:hover {
+                        background-color: rgb(20, 20, 20);
+                    }
+                }
+            }
+
+            &.keypad {
+                display: flex;
+                flex-direction: column;
+
+                .phoneScreenKeypadDisplay {
+                    color: white;
+                    font-size: 40px;
+                    height: 30%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                .phoneScreenKeypadNumbersContainer {
+                    margin-top: 10px;
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 20px;
+                    align-items: center;
+
+                    .phoneScreenKeypadNumbersRow {
+                        width: 60%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-around;
+
+                        .phoneScreenKeypadNumber {
+                            background-color: gray;
+                            border-radius: 50%;
+                            color: white;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+
+                            font-size: 350%;
+                            width: 100px;
+                            height: 100px;
+
+                            &.outlined {
+                                background-color: transparent;
+                            }
+
+                            &.transparent {
+                                opacity: 0;
+
+                                &:hover {
+                                    opacity: 0 !important;
+                                }
+                            }
+
+                            &.call {
+                                background-color: rgb(48, 209, 88);
+                            }
+
+                            &:hover {
+                                opacity: 0.7;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .phoneScreenMenuBottom {
+            display: flex;
+            width: 100%;
+            background-color: rgba(28, 28, 28);
+            padding: 0 10px;
+
+            .phoneScreenMenuBottomItem {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                flex-grow: 1;
+                padding: 20px;
+                color: rgb(115, 115, 115);
+
+                &:hover {
+                    opacity: 0.8;
+                }
+
+                &.selected {
+                    svg {
+                        color: #0886ff;
+                    }
+
+                    span {
+                        color: #0886ff;
+                    }
+                }
+
+                svg {
+                    font-size: 40px;
+                }
+
+                span {
+                    font-size: 30px;
+                }
+            }
+        }
+    }
+
+    .phoneScreenNewContact {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+
+        .phoneScreenNewContactBody {
+            flex-grow: 1;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+
+            .phoneScreenNewContactPersonIcon {
+                padding: 50px;
+                background-color: rgb(28, 28, 30);
+                color: white;
+                font-size: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+            }
+
+            .phoneScreenNewContactInput {
+                color: white;
+                display: flex;
+                align-items: center;
+                background-color: rgb(28, 28, 30);
+                border-radius: 20px;
+                padding: 10px;
+                font-size: 35px;
+                gap: 20px;
+
+                input {
+                    background-color: transparent;
+                    width: 100%;
+                    font-size: 30px;
+                    flex-grow: 1;
+                    color: white;
+                    border: none;
+
+                    &:focus-visible {
+                        border: none !important;
+                        outline: none !important;
+                    }
+                }
+            }
+        }
+
+        .phoneScreenNewContactBottom {
+            color: white;
+            font-size: 35px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            width: 100%;
+            padding: 50px 0;
+
+            span {
+                text-align: center;
+
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
+        }
+    }
+
+    .phoneScreenContactDetail {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+
+        .phoneScreenContactDetailHeader {
+            display: flex;
+            flex-direction: column;
+            // background: linear-gradient(0deg, rgb(41, 41, 51) 0%, rgb(72, 75, 82) 100%);
+            gap: 20px;
+
+            .phoneScreenContactDetailHeaderTop {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                color: white;
+                padding: 10px;
+
+                .phoneScreenContactDetailHeaderTopBackButton {
+                    padding: 20px;
+                    font-size: 35px;
+                    background-color: rgb(85, 86, 91);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    &:hover {
+                        opacity: 0.8;
+                    }
+                }
+
+                .phoneScreenContactDetailHeaderTopEditButton {
+                    padding: 15px;
+                    font-size: 30px;
+                    background-color: rgb(85, 86, 91);
+                    border-radius: 20px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    &:hover {
+                        opacity: 0.8;
+                    }
+                }
+            }
+
+            .phoneScreenContactDetailData {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                color: white;
+
+                .phoneScreenContactDetailDataPersonIcon {
+                    background-color: rgb(134, 138, 149);
+                    padding: 35px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 50%;
+                    font-size: 50px;
+                }
+
+                .phoneScreenContactDetailDataName {
+                    font-size: 45px;
+                }
+            }
+
+            .phoneScreenContactDetailHeaderButtons {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 15px;
+
+                .phoneScreenContactDetailHeaderButton {
+                    background-color: rgb(134, 138, 149);
+                    padding: 25px;
+                    font-size: 35px;
+                    color: white;
+                    border-radius: 10px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    &:hover {
+                        opacity: 0.8;
+                    }
+                }
+            }
+        }
+
+        .phoneScreenContactDetailOptions {
+            display: flex;
+            flex-direction: column;
+            margin-top: 40px;
+            gap: 20px;
+            padding: 15px;
+
+            .phoneScreenContactDetailOptionsSection {
+                background-color: rgb(28, 28, 30);
+                border-radius: 10px;
+
+                hr {
+                    color: white;
+                    margin: 0;
+                }
+
+                .phoneScreenContactDetailOptionsSectionItem {
+                    padding: 15px;
+                    font-size: 30px;
+
+                    display: flex;
+                    flex-direction: column;
+
+                    &:hover {
+                        opacity: 0.8;
+                    }
+
+                    .phoneScreenContactDetailOptionsSectionTitle {
+                        color: white;
+                    }
+
+                    .phoneScreenContactDetailOptionsSectionButtonText {
+                        color: rgb(0, 122, 255);
+                    }
+
+                    .phoneScreenContactDetailOptionsSectionButtonTextDanger {
+                        color: rgb(225, 73, 60);
+                    }
+                }
+            }
+        }
+    }
+
+    .phoneScreenKeypadCall {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+
+        .phoneScreenKeypadCallTopContainer {
+            color: white;
+            font-size: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            flex-grow: 1;
+        }
+
+        .phoneScreenKeypadCallBottomContainer {
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+
+            .phoneScreenKeypadCallBottomEndCall {
+                padding: 40px;
+                background-color: red;
+                font-size: 55px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
+        }
+    }
+
+    .lostCall {
+        color: #de3526;
+    }
+
+    .callScreen {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+
+        .callScreenTopContainer {
+            color: white;
+            font-size: 55px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            flex-grow: 1;
+        }
+
+        .callScreenBottomContainer {
+            color: white;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-evenly;
+            flex-grow: 1;
+
+            .callScreenBottomButton {
+                padding: 40px;
+                font-size: 55px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+
+                &.accept {
+                    background-color: green;
+                }
+
+                &.end {
+                    background-color: red;
+                }
+
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
+        }
+    }
+
+    .phoneContainer {
+        height: 1000px;
+        width: 560px;
+
+        .screen {
+            height: 1000px;
+            width: 555px;
+        }
+
+        .notificationBar {
+            min-height: 60px;
+
+            .notch {
+                min-width: 204px;
+                height: 45px;
+
+                .camera {
+                    height: 50px;
+                }
+            }
+        }
+    }
+
+    .lockScreen {
+        .lockScreenClockText {
+            font-size: 800% !important;
+        }
+
+        .lockScreenDateText {
+            font-size: 250% !important;
+        }
+
+        .lockScreenTop {
+            padding-top: 80px !important;
+        }
+
+        .lockScreenUnlockText {
+            font-size: 200% !important;
+        }
+
+        .unlockBar {
+            padding: 4px !important;
+        }
+    }
+
+    .passcodeScreen {
+        .passcodeScreenMainText {
+            font-size: 260% !important;
+        }
+
+        .passcodeScreenNumber {
+            font-size: 250% !important;
+            width: 80px !important;
+            height: 80px !important;
+        }
+    }
+
+    .homeScreen {
+        img {
+            width: 100px !important;
+        }
+    }
+
+    .settingsScreen {
+        .settingsScreenTitle {
+            font-size: 350% !important;
+        }
+
+        .settingsScreenMenuSection {
+            font-size: 200% !important;
+        }
+    }
+
+    .settingsScreenSounds {
+        padding: 10px !important;
+
+        .settingsScreenSoundsTop {
+            font-size: 250% !important;
+        }
+
+        .settingsScreenSoundsBody {
+            margin-top: 20px !important;
+
+            .settingsScreenSoundsSectionTitle {
+                font-size: 200% !important;
+            }
+        }
+
+        .settingsScreenSoundsSectionData {
+            svg {
+                color: gray;
+                width: 35px !important;
+                height: 30px !important;
+            }
+
+            input[type='range']::-webkit-slider-runnable-track {
+                height: 8px !important;
+                border-radius: 8px;
+            }
+
+            input[type='range']::-webkit-slider-thumb {
+                margin-top: -10px !important;
+                background-color: white;
+                height: 30px !important;
+                width: 30px !important;
+                border-radius: 50%;
+            }
+        }
+    }
+
+    .settingsScreenWallpaper {
+        padding: 10px !important;
+
+        .settingsScreenWallpaperTop {
+            font-size: 250% !important;
+        }
+
+        .settingsScreenWallpaperBody {
+            margin-top: 20px !important;
+
+            img {
+                border-radius: 20px;
+                height: 400px !important;
+                width: 230px !important;
+
+                object-fit: cover;
+            }
+        }
+    }
+
+    .settingsScreenpassword {
+        padding: 10px;
+
+        .settingsScreenpasswordTop {
+            font-size: 250% !important;
+        }
+
+        .settingsScreenpasswordBody {
+            .settingsScreenpasswordSectionItem {
+                font-size: 200% !important;
+            }
+        }
+    }
+
+    .settingsScreenpasswordNew {
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+
+        .settingsScreenpasswordNewTop {
+            color: white;
+            display: flex;
+            font-size: 300%;
+
+            div {
+                flex-grow: 1;
+            }
+
+            .settingsScreenpasswordNewTopBackButton {
+                color: rgb(0, 122, 255);
+
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
+        }
+
+        .settingsScreenpasswordNewBody {
+            .settingsScreenpasswordNewTop {
+                font-size: 250% !important;
+            }
+
+            .settingsScreenpasswordNewPasswordContainer {
+                gap: 20px !important;
+
+                .settingsScreenpasswordNewPasswordIndicator {
+                    div {
+                        padding: 10px !important;
+                    }
+                }
+
+                .settingsScreenpasswordNewPasswordKeyboardContainer {
+                    font-size: 300% !important;
+
+                    .settingsScreenpasswordNewPasswordKeyboardRow {
+                        .settingsScreenpasswordNewPasswordKeyboardNumber {
+                            height: 80px !important;
+                            width: 80px !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .messagesScreen {
+        gap: 25px;
+
+        .messagesScreenHeader {
+            .messagesScreenHeaderNewChat {
+                font-size: 40px !important;
+            }
+
+            .messagesScreenTitle {
+                font-size: 40px !important;
+            }
+        }
+
+        .messagesScreenBody {
+            .messagesScreenSearchInput {
+                padding: 10px !important;
+                border-radius: 20px;
+                font-size: 25px !important;
+                gap: 10px !important;
+            }
+
+            .messagesScreenList {
+                gap: 10px !important;
+                margin-top: 15px !important;
+
+                .messagesScreenMessageItem {
+                    gap: 20px !important;
+
+                    .messagesScreenMessageItemIcon {
+                        padding: 20px !important;
+                        font-size: 30px !important;
+                    }
+
+                    .messagesScreenMessageItemData {
+                        .messagesScreenMessageItemDataTitle {
+                            gap: 20px !important;
+
+                            .messagesScreenMessageItemUnread {
+                                padding: 8px !important;
+                            }
+
+                            .messagesScreenMessageItemTitle {
+                                font-size: 32px !important;
+                            }
+                        }
+
+                        .messagesScreenMessageItemInfo {
+                            font-size: 26px !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .newmessageScreen {
+        padding: 15px;
+        gap: 20px;
+
+        .newmessageScreenHeader {
+            gap: 15px;
+
+            span {
+                font-size: 30px;
+            }
+        }
+
+        .newmessageScreenBody {
+            .newmessageScreenSelectedContacts {
+                font-size: 25px;
+                gap: 10px;
+                margin-bottom: 8px;
+
+                .newmessageScreenSelectedContactItem {
+                    padding: 8px;
+                    gap: 10px;
+                }
+            }
+
+            .newmessageScreenSearch {
+                .newmessageScreenSearchInput {
+                    padding: 10px;
+                    font-size: 25px;
+
+                    input {
+                        font-size: 25px;
+                    }
+                }
+
+                .newmessageScreenSearchResult {
+                    padding: 5px;
+                    margin-top: 10px;
+                    border-radius: 8px;
+                    max-height: 280px;
+
+                    .newmessageScreenSearchResultItem {
+                        font-size: 25px;
+                        gap: 15px;
+                        padding: 15px;
+                    }
+
+                    .newmessageScreenSearchResultItemImage {
+                        padding: 15px;
+                        border-radius: 50%;
+                        font-size: 35px;
+                    }
+                }
+            }
+
+            .newMessageBottom {
+                gap: 12px;
+
+                .newMessageText {
+                    padding: 10px;
+                    font-size: 25px;
+
+                    input {
+                        font-size: 25px;
+                    }
+                }
+
+                .newMessageSendButton {
+                    font-size: 25px;
+                    padding: 8px;
+                    width: 70px;
+                    height: 70px;
+                }
+            }
+        }
+    }
+
+    .messageChatScreen {
+        height: 92%;
+        padding: 15px;
+        gap: 25px;
+
+        .messageChatScreenHeader {
+            .messageChatScreenBackButton {
+                padding: 10px;
+                font-size: 35px;
+            }
+
+            .messageChatScreenIntegrants {
+                font-size: 30px;
+                gap: 8px;
+            }
+
+            .messageChatScreenMore {
+                padding: 7px;
+                font-size: 25px;
+            }
+
+            .messageChatScreenIcon {
+                font-size: 35px;
+                padding: 15px;
+                margin-right: 5px;
+            }
+        }
+
+        .messageChatScreenMessages {
+            gap: 20px;
+
+            .messageChatScreenMessage {
+                font-size: 25px;
+                gap: 15px;
+
+                .messageChatScreenMessageIcon {
+                    font-size: 35px;
+                    padding: 15px;
+                }
+
+                .messageChatScreenMessageInfo {
+                    padding: 15px;
+                    border-radius: 15px;
+                }
+            }
+        }
+
+        .messageChatScreenSendMessage {
+            input {
+                font-size: 25px;
+                padding: 10px;
+            }
+
+            .messageChatScreenSendMessageButton {
+                font-size: 25px;
+                padding: 7px;
+                width: 75px;
+                height: 75px;
+            }
+        }
+    }
+
+    .phoneScreen {
+        .phoneScreenHeader {
+            font-size: 40px;
+
+            .phoneScreenHeaderAddButton {
+                font-size: 30px;
+            }
+        }
+
+        .phoneScreenBody {
+            &.calls {
+                .phoneScreenCall {
+                    font-size: 25px;
+
+                    .phoneScreenCallInfo {
+                        gap: 7px;
+
+                        &.end {
+                            font-size: 12.5px;
+
+                            .phoneScreenCallInfoButton {
+                                font-size: 35px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.contacts {
+                .phoneScreenContactsSearchInput {
+                    border-radius: 15px;
+                    padding: 8px;
+                    font-size: 25px;
+                    gap: 15px;
+
+                    input {
+                        font-size: 25px;
+                    }
+                }
+
+                .phoneScreenContact {
+                    padding: 7px;
+                    font-size: 25px;
+                }
+            }
+
+            &.keypad {
+                .phoneScreenKeypadDisplay {
+                    height: 30%;
+                }
+
+                .phoneScreenKeypadNumbersContainer {
+                    margin-top: 10px;
+                    gap: 15px;
+
+                    .phoneScreenKeypadNumbersRow {
+                        width: 60%;
+
+                        .phoneScreenKeypadNumber {
+                            font-size: 25px;
+                            width: 80px;
+                            height: 80px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .phoneScreenMenuBottom {
+            padding: 0 6px;
+
+            .phoneScreenMenuBottomItem {
+                padding: 15px;
+
+                svg {
+                    font-size: 30px;
+                }
+
+                span {
+                    font-size: 25px;
+                }
+            }
+        }
+    }
+
+    .phoneScreenNewContact {
+        .phoneScreenNewContactBody {
+            gap: 35px;
+
+            .phoneScreenNewContactPersonIcon {
+                padding: 40px;
+                font-size: 40px;
+            }
+
+            .phoneScreenNewContactInput {
+                padding: 6px;
+                font-size: 25px;
+
+                input {
+                    font-size: 25px;
+                }
+            }
+        }
+
+        .phoneScreenNewContactBottom {
+            font-size: 25px;
+        }
+    }
+
+    .phoneScreenContactDetail {
+        .phoneScreenContactDetailHeader {
+            gap: 15px;
+
+            .phoneScreenContactDetailHeaderTop {
+                padding: 6px;
+
+                .phoneScreenContactDetailHeaderTopBackButton {
+                    padding: 15px;
+                    font-size: 25px;
+                }
+
+                .phoneScreenContactDetailHeaderTopEditButton {
+                    padding: 10px;
+                    font-size: 22px;
+                    border-radius: 15px;
+                }
+            }
+
+            .phoneScreenContactDetailData {
+                .phoneScreenContactDetailDataPersonIcon {
+                    padding: 25px;
+                    font-size: 40px;
+                }
+
+                .phoneScreenContactDetailDataName {
+                    font-size: 30px;
+                }
+            }
+
+            .phoneScreenContactDetailHeaderButtons {
+                .phoneScreenContactDetailHeaderButton {
+                    padding: 20px;
+                    font-size: 25px;
+                }
+            }
+        }
+
+        .phoneScreenContactDetailOptions {
+            margin-top: 35px;
+            gap: 20px;
+            padding: 10px;
+
+            .phoneScreenContactDetailOptionsSection {
+                .phoneScreenContactDetailOptionsSectionItem {
+                    padding: 10px;
+                    font-size: 25px;
+                }
+            }
+        }
+    }
+
+    .phoneScreenKeypadCall {
+        .phoneScreenKeypadCallTopContainer {
+            font-size: 35px;
+        }
+
+        .phoneScreenKeypadCallBottomContainer {
+            .phoneScreenKeypadCallBottomEndCall {
+                padding: 35px;
+                font-size: 40px;
+            }
+        }
+    }
+
+    .callScreen {
+        .callScreenTopContainer {
+            font-size: 50px;
+        }
+
+        .callScreenBottomContainer {
+            .callScreenBottomButton {
+                padding: 35px;
+                font-size: 55px;
+            }
+        }
+    }
+
+    .messageChatDetailScreen {
+        padding: 16px;
+        gap: 20px;
+
+        .messageChatDetailScreenHeader {
+            font-size: 30px;
+        }
+
+        .messageChatDetailScreenBody {
+            gap: 25px;
+
+            .messageChatDetailScreenGroupDetail {
+                margin-top: 35px;
+                gap: 20px;
+
+                .messageChatDetailScreenGroupDetailPicture {
+                    padding: 35px;
+                    font-size: 30px;
+                }
+
+                .messageChatDetailScreenGroupDetailName {
+                    font-size: 30px;
+                }
+            }
+
+            .messageChatDetailScreenOptions {
+                .messageChatDetailScreenOption {
+                    font-size: 25px;
+                    border-radius: 18px;
+                    padding: 8px;
+                }
+            }
+
+            .messageChatDetailScreenParticipantList {
+                gap: 15px;
+                max-height: 440px;
+
+                .messageChatDetailScreenParticipant {
+                    gap: 15px;
+
+                    .messageChatDetailScreenParticipantPicture {
+                        font-size: 25px;
+                        padding: 15px;
+                    }
+
+                    .messageChatDetailScreenParticipantName {
+                        font-size: 25px;
+                    }
+
+                    .messageChatDetailScreenParticipantOptions {
+                        gap: 10px;
+
+                        .messageChatDetailScreenParticipantOption {
+                            font-size: 25px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .newmessageOptionsScreen {
+        padding: 15px;
+        gap: 25px;
+
+        .newmessageOptionsScreenHeader {
+            gap: 20px;
+
+            span {
+                font-size: 30px;
+            }
+        }
+
+        .newMessageOptionsScreenBody {
+            gap: 15px;
+
+            .newmessageOptionsScreenSearch {
+                .newmessageOptionsScreenSearchInput {
+                    border-radius: 20px;
+                    padding: 10px;
+                    font-size: 25px;
+
+                    input {
+                        font-size: 25px;
+                    }
+                }
+
+                // .newmessageOptionsScreenSearchResult {
+                //     padding: 10px;
+                //     margin-top: 10px;
+                //     border-radius: 8px;
+                //     max-height: 350px;
+
+                //     .newmessageOptionsScreenSearchResultItem {
+                //         font-size: 30px;
+                //         gap: 20px;
+                //         padding: 20px;
+                //     }
+
+                //     .newmessageOptionsScreenSearchResultItemImage {
+                //         padding: 20px;
+                //         font-size: 40px;
+                //     }
+                // }
+            }
+
+            .newMessageOptionsScreenSection {
+                border-radius: 10px;
+
+                .newMessageOptionsScreenSectionOption {
+                    padding: 14px;
+                    font-size: 25px;
+                    gap: 20px;
+                }
+            }
+
+            .newMessageOptionsScreenContactList {
+                padding: 10px;
+                border-radius: 8px;
+                max-height: 550px;
+
+                .newMessageOptionsScreenContactListItem {
+                    font-size: 25px;
+                    gap: 15px;
+                    padding: 15px;
+                }
+
+                .newMessageOptionsScreenContactListItemImage {
+                    padding: 18px;
+                    font-size: 30px;
+                }
+            }
+        }
+    }
+
+    @keyframes unlock-bounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+            transform: translateY(0px);
+        }
+
+        40% {
+            transform: translateY(-5px);
+        }
+
+        60% {
+            transform: translateY(-2.5px);
+        }
+    }
+
+    @keyframes passcode-bounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+            transform: translatex(0px);
+        }
+
+        10% {
+            transform: translatex(-5px);
+        }
+
+        30% {
+            transform: translatex(5px);
+        }
+
+        70% {
+            transform: translatex(-2.5px);
+        }
+
+        90% {
+            transform: translatex(2.5px);
+        }
+    }
+
+    @keyframes slideUp-phone {
+        0% {
+            transform: translateY(1500px);
+        }
+    }
+
+    @keyframes change-bg-black {
+        0% {
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 1;
+            background: black;
+        }
+    }
+
+    @keyframes slideDown-phone {
+        100% {
+            display: none;
+        }
+
+        99% {
+            transform: translateY(1500px);
+        }
+    }
+
+    @keyframes fade-out1 {
+        from {
+            opacity: 1;
+        }
+
+        to {
+            opacity: 0;
+        }
+    }
+}

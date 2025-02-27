@@ -1,0 +1,159 @@
+#hud {
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+
+    // VARIAVEIS DE CORES
+    $moneyinfo: rgba(0, 190, 72, 1);
+    $moneyicon: rgba(0, 156, 59, 1);
+    $generalinfo: rgba(52, 58, 64, 1);
+    $generalicon: rgba(39, 39, 39, 1);
+
+    .rightTop {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+
+    .leftBottom {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        transform: translateY(-100%);
+    }
+
+    // -- INICIO ITENS COLORIDOS DA HUD --
+    .bottomSecondRow {
+        display: flex;
+    }
+
+    .health,
+    .armor,
+    .wallet,
+    .bank {
+        box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.3);
+        border-radius: 12px;
+        display: flex;
+        margin: 0px 4px 4px 0px;
+    }
+
+    .healthInfo {
+        background-color: rgba(255, 0, 0, 1);
+    }
+
+    .armorInfo {
+        background-color: rgba(0, 114, 255, 1);
+    }
+
+    .walletInfo,
+    .bankInfo {
+        background-color: $moneyinfo;
+    }
+
+    .healthInfo,
+    .armorInfo,
+    .walletInfo,
+    .bankInfo {
+        color: white;
+        padding: 7px 5px 7px 5px;
+        border-radius: 0px 5px 5px 0px;
+        min-width: 35px;
+        height: 35px;
+        font-weight: bold;
+        font-size: 13px;
+        text-align: center;
+    }
+
+    .healthIcon {
+        background-color: rgba(152, 0, 0, 1);
+    }
+
+    .armorIcon {
+        background-color: rgba(0, 77, 173, 1);
+    }
+
+    .walletIcon,
+    .bankIcon {
+        background-color: $moneyicon;
+    }
+
+    .healthIcon,
+    .armorIcon,
+    .walletIcon,
+    .bankIcon {
+        color: white;
+        border-radius: 5px 0px 0px 5px;
+        min-width: 35px;
+        font-weight: bold;
+        font-size: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    // -- FINAL ITENS COLORIDOS DA HUD --
+
+    // -- INICIO ITENS CINZAS DA HUD --
+    .topFirstRow,
+    .topSecondRow {
+        display: flex;
+        justify-content: flex-end;
+    }
+    .bottomFirstRow,
+    .bottomThirdRow {
+        display: flex;
+    }
+
+    .admin,
+    .server,
+    .firemode,
+    .ammo,
+    .odometer,
+    .fuelmeter,
+    .location,
+    .compass {
+        box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.3);
+        border-radius: 12px;
+        display: flex;
+        margin: 0px 4px 4px 0px;
+    }
+
+    .adminInfo,
+    .serverInfo,
+    .firemodeInfo,
+    .ammoInfo,
+    .odometerInfo,
+    .fuelmeterInfo,
+    .locationInfo,
+    .compassInfo {
+        background-color: $generalinfo;
+        color: white;
+        padding: 7px 5px 7px 5px;
+        border-radius: 0px 5px 5px 0px;
+        min-width: 35px;
+        height: 35px;
+        font-weight: bold;
+        font-size: 13px;
+        text-align: center;
+    }
+
+    .adminIcon,
+    .serverIcon,
+    .firemodeIcon,
+    .ammoIcon,
+    .odometerIcon,
+    .fuelmeterIcon,
+    .locationIcon,
+    .compassIcon {
+        background-color: $generalicon;
+        color: white;
+        border-radius: 5px 0px 0px 5px;
+        min-width: 35px;
+        font-weight: bold;
+        font-size: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
