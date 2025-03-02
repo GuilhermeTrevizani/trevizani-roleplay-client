@@ -22,19 +22,5 @@
   {"drawable":19,"dlc":null,"textures":4,"factionType":0},
   {"drawable":20,"dlc":null,"textures":4,"factionType":0},
   {"drawable":21,"dlc":null,"textures":4,"factionType":0},
-  {"drawable":22,"dlc":null,"textures":12,"factionType":0},
-  {"drawable":23,"dlc":"mp_f_lscclothes1;0","textures":3,"factionType":0},
-  {"drawable":24,"dlc":"mp_f_lscclothes1;1","textures":14,"factionType":0},
-  {"drawable":25,"dlc":"mp_f_lscclothes1;2","textures":1,"factionType":0},
-  {"drawable":26,"dlc":"mp_f_lscclothes1;3","textures":3,"factionType":0},
-  {"drawable":27,"dlc":"mp_f_lscclothes1;4","textures":3,"factionType":0},
-  {"drawable":28,"dlc":"mp_f_lscclothes1;5","textures":2,"factionType":0},
-  {"drawable":29,"dlc":"mp_f_lscclothes1;6","textures":4,"factionType":0},
-  {"drawable":30,"dlc":"mp_f_lscclothes1;7","textures":1,"factionType":0},
-  {"drawable":31,"dlc":"mp_f_lscclothes1;8","textures":1,"factionType":0},
-  {"drawable":32,"dlc":"mp_f_lscclothes1;9","textures":3,"factionType":0},
-  {"drawable":33,"dlc":"mp_f_lscclothes1;10","textures":3,"factionType":0},
-  {"drawable":34,"dlc":"mp_f_lscclothes1;11","textures":4,"factionType":0},
-  {"drawable":35,"dlc":"mp_f_lscclothes1;12","textures":2,"factionType":0},
-  {"drawable":36,"dlc":"mp_f_lscclothes4;0","textures":1,"factionType":0}
+  {"drawable":22,"dlc":null,"textures":12,"factionType":0}
 ]

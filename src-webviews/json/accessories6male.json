@@ -45,12 +45,5 @@
   {"drawable":43,"dlc":null,"textures":3,"factionType":0},
   {"drawable":44,"dlc":null,"textures":3,"factionType":0},
   {"drawable":45,"dlc":null,"textures":5,"factionType":0},
-  {"drawable":46,"dlc":null,"textures":5,"factionType":0},
-  {"drawable":49,"dlc":"mp_m_lscmale1;0","textures":3,"factionType":0},
-  {"drawable":50,"dlc":"mp_m_lscmale1;1","textures":2,"factionType":0},
-  {"drawable":51,"dlc":"mp_m_lscmale1;2","textures":2,"factionType":0},
-  {"drawable":52,"dlc":"mp_m_lscmale1;3","textures":8,"factionType":0},
-  {"drawable":53,"dlc":"mp_m_lscmale1;4","textures":1,"factionType":0},
-  {"drawable":54,"dlc":"mp_m_lscmale3;0","textures":5,"factionType":0},
-  {"drawable":55,"dlc":"mp_m_lscmale3;1","textures":1,"factionType":0}
+  {"drawable":46,"dlc":null,"textures":5,"factionType":0}
 ]

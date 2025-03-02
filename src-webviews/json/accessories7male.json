@@ -13,6 +13,5 @@
   {"drawable":10,"dlc":null,"textures":5,"factionType":0},
   {"drawable":11,"dlc":null,"textures":5,"factionType":0},
   {"drawable":12,"dlc":null,"textures":14,"factionType":0},
-  {"drawable":13,"dlc":null,"textures":6,"factionType":0},
-  {"drawable":16,"dlc":"mp_m_lscmale1;0","textures":1,"factionType":0}
+  {"drawable":13,"dlc":null,"textures":6,"factionType":0}
 ]

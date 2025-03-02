@@ -212,8 +212,5 @@
   {"drawable":210,"dlc":null,"textures":1,"factionType":0},
   {"drawable":211,"dlc":null,"textures":1,"factionType":0},
   {"drawable":212,"dlc":null,"textures":1,"factionType":0},
-  {"drawable":213,"dlc":null,"textures":1,"factionType":0},
-  {"drawable":214,"dlc":"mp_m_lscmale2;0","textures":1,"factionType":0},
-  {"drawable":215,"dlc":"mp_m_lscmale2;1","textures":1,"factionType":0},
-  {"drawable":216,"dlc":"mp_m_lscmale2;2","textures":1,"factionType":0}
+  {"drawable":213,"dlc":null,"textures":1,"factionType":0}
 ]

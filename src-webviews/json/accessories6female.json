@@ -34,6 +34,5 @@
   {"drawable":32,"dlc":null,"textures":3,"factionType":0},
   {"drawable":33,"dlc":null,"textures":3,"factionType":0},
   {"drawable":34,"dlc":null,"textures":5,"factionType":0},
-  {"drawable":35,"dlc":null,"textures":5,"factionType":0},
-  {"drawable":38,"dlc":"mp_f_lscclothes4;0","textures":1,"factionType":0}
+  {"drawable":35,"dlc":null,"textures":5,"factionType":0}
 ]
