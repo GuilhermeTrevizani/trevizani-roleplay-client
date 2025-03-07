@@ -82,4 +82,3 @@ import './base/fire';
 import './base/outfits';
 import './base/attributes';
 import './base/vehicle';
-import './base/gen9';

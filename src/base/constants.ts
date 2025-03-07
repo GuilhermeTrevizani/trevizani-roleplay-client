@@ -1,5 +1,6 @@
 export const Constants = {
-  SERVER_NAME: 'Los Santos Chronicles',
+  LANGUAGE: 'en-US',
+  SERVER_NAME: 'Trevizani Roleplay',
   DISCORD_APP_ID: '1218596733869621450',
   PLAYER_META_DATA_INJURED: 'INJURED',
   PLAYER_META_DATA_GAME_UNFOCUSED: 'GAME_UNFOCUSED',
