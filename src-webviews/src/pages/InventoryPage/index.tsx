@@ -1,5 +1,5 @@
 import './index.scss'
-import { DragDropContext, Droppable, Draggable, DragStart, DropResult } from 'react-beautiful-dnd'
+import { DndContext, DragEndEvent, DragStartEvent, useDroppable, useDraggable } from '@dnd-kit/core';
 import { ReactElement, useEffect, useRef, useState } from 'react'
 import { configureEvent, emitEvent, formatValue } from '../../services/util'
 import { Constants } from '../../../../src/base/constants'
@@ -44,6 +44,31 @@ const InventoryPage = () => {
     return !!item ? item[0] : undefined;
   }
 
+  function Droppable(props) {
+    const { setNodeRef } = useDroppable({
+      id: props.id,
+      disabled: props.disabled,
+    });
+
+    return (
+      <div ref={setNodeRef}>
+        {props.children}
+      </div>
+    );
+  }
+
+  function Draggable(props) {
+    const { attributes, listeners, setNodeRef } = useDraggable({
+      id: props.id,
+    });
+
+    return (
+      <span ref={setNodeRef} {...listeners} {...attributes}>
+        {props.children}
+      </span>
+    );
+  }
+
   const renderItems = (side: 'left' | 'right') => {
     const getItem = side === 'left' ? getItemLeft : getItemRight;
     const slots = side === 'left' ? leftSlots : rightSlots;
@@ -54,58 +79,34 @@ const InventoryPage = () => {
       if (item !== undefined) {
         const { id, name, quantity, inUse, image, isUsable, weight, extra } = { ...item }
         arrRes.push(
-          <Droppable droppableId={`${i}-${side}`} isDropDisabled key={i}>
-            {(provided, snapshot) => (
+          <Droppable id={`${i}-${side}`} disabled={true} key={i} children={<div
+            className='inventoryItemWrapper'
+          >
+            <Draggable key={`${i}-${side}`} id={`${i}-${side}`} index={i} children={<Popover content={<>
+              <span>{t('weight')}: <strong>{formatValue(weight * quantity, 2)} kg</strong></span>
+              {extra && <><br /><span dangerouslySetInnerHTML={{ __html: extra }}></span></>}
+            </>} title={name}>
               <div
-                ref={provided.innerRef}
-                {...provided.droppableProps}
-                className='inventoryItemWrapper'
+                onContextMenu={(ev) => useItem(id, quantity, isUsable)}
+                className={'inventoryItem' + (inUse ? ' using' : '')}
               >
-                <Draggable key={`${i}-${side}`} draggableId={`${i}-${side}`} index={i}>
-                  {(provided, snapshot) => (
-                    <>
-                      <Popover content={<>
-                        <span>{t('weight')}: <strong>{formatValue(weight * quantity, 2)} kg</strong></span>
-                        {extra && <><br /><span dangerouslySetInnerHTML={{ __html: extra }}></span></>}
-                      </>} title={name}>
-                        <div
-                          onContextMenu={(ev) => useItem(id, quantity, isUsable)}
-                          className={'inventoryItem' + (inUse ? ' using' : '')}
-                          ref={provided.innerRef}
-                          {...provided.draggableProps}
-                          {...provided.dragHandleProps}
-                        >
-                          <div className='inventoryItemTop'>
-                            <span>{formatValue(snapshot.isDragging ? getQuantity(quantity) : quantity)}x</span>
-                            <img src={image} alt="" className='inventoryItemImage' />
-                          </div>
-                          <div className='inventoryItemBottom'>
-                            <span>{name}</span>
-                          </div>
-                        </div>
-                      </Popover>
-                    </>
-                  )}
-                </Draggable>
+                <div className='inventoryItemTop'>
+                  <span>{formatValue(quantity)}x</span>
+                  <img src={image} alt="" className='inventoryItemImage' />
+                </div>
+                <div className='inventoryItemBottom'>
+                  <span>{name}</span>
+                </div>
               </div>
-            )
-            }
-          </Droppable>
+            </Popover>} />
+          </div>} />
         )
       }
       else {
         arrRes.push(
-          <Droppable droppableId={`${i}-${side}`} key={i}>
-            {(provided, snapshot) => (
-              <div
-                ref={provided.innerRef}
-                {...provided.droppableProps}
-                className='inventoryItemWrapper'
-              >
-              </div>
-            )
-            }
-          </Droppable>
+          <Droppable id={`${i}-${side}`} key={i} children={<div
+            className='inventoryItemWrapper'
+          />} />
         )
       }
 
@@ -113,9 +114,9 @@ const InventoryPage = () => {
     return <>{arrRes.map(x => x)}</>
   }
 
-  const handleDragItem = (start: DragStart) => {
+  const handleDragItem = (start: DragStartEvent) => {
     try {
-      const idSplitted = start.draggableId.split('-');
+      const idSplitted = start.active.id.toString().split('-');
       const getItem = idSplitted[1] == 'left' ? getItemLeft : getItemRight
 
       setItemDragged(getItem(Number(idSplitted[0])))
@@ -131,7 +132,7 @@ const InventoryPage = () => {
     return Math.min(realQuantity, qtdDrag);
   };
 
-  const handleDrop = (res: DropResult) => {
+  const handleDrop = (res: DragEndEvent) => {
     try {
       if (!itemDragged)
         return;
@@ -139,19 +140,19 @@ const InventoryPage = () => {
       giveItem.current = itemDragged;
       const { id, quantity, name, isStack } = { ...itemDragged };
 
-      if (!res.destination) {
+      if (!res.over) {
         setItemDragged(undefined);
         return;
       }
 
-      if (res.destination.droppableId == 'give') {
+      if (res.over.id == 'give') {
         setItemDragged(undefined);
         emitEvent(Constants.INVENTORY_PAGE_GET_NEARBY_CHARACTERS);
         return
       }
 
-      const dragIdSplitted = res.draggableId.split('-')
-      const dropIdSplitted = res.destination.droppableId.split('-')
+      const dragIdSplitted = res.active.id.toString().split('-')
+      const dropIdSplitted = res.over.id.toString().split('-')
       const leftOrigin = dragIdSplitted[1] === 'left';
       const leftTarget = dropIdSplitted[1] === 'left';
       const slot = Number(dropIdSplitted[0]);
@@ -515,7 +516,7 @@ const InventoryPage = () => {
   }, [modalGiveIsOpen]);
 
   return <div id='inventoryPage'>
-    <DragDropContext onDragStart={handleDragItem} onDragEnd={handleDrop}>
+    <DndContext onDragStart={handleDragItem} onDragEnd={handleDrop}>
       <div className='mainContainer'>
         <div className="subContainer">
           <div className='inventoryCard'>
@@ -540,16 +541,10 @@ const InventoryPage = () => {
               <div className='centerOptionLg'>
                 <input type="number" placeholder='QTD' className='qtdInput' min={0} onChange={(ev) => setQtdToDrag(Number(ev.target.value))} value={qtdToDrag} />
               </div>
-              <Droppable droppableId={'give'}>
-                {(provided, snapshot) => (
-                  <div
-                    ref={provided.innerRef}
-                    {...provided.droppableProps}
-                    className='centerOptionLg'>
-                    {t('give')}
-                  </div>
-                )}
-              </Droppable>
+              <Droppable id={'give'} children={<div
+                className='centerOptionLg'>
+                {t('give')}
+              </div>} />
             </div>
             <div className="centerSpaceInner">
               <div className='centerOptionDescription'>
@@ -633,7 +628,7 @@ const InventoryPage = () => {
           </div>
         </div>
       }
-    </DragDropContext>
+    </DndContext>
   </div>
 };
 

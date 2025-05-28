@@ -8,7 +8,7 @@ import builtinModules from 'builtin-modules';
 import commonjsPlugin from '@rollup/plugin-commonjs';
 import tsPaths from 'rollup-plugin-tsconfig-paths';
 import typescriptPlugin from 'rollup-plugin-typescript2';
-import { terser } from 'rollup-plugin-terser';
+import { terser } from "@rollup/plugin-terser";
 
 const buildOutput = 'C:\\RAGEMP\\server-files\\client_packages';
 const isProduction = false;
@@ -21,79 +21,79 @@ const localInstalledPackages = [...Object.keys(pkgJson.dependencies)];
  * Resolve given path by fs-jetpack
  */
 function resolvePath(pathParts) {
-	return jetpack.path(...pathParts);
+  return jetpack.path(...pathParts);
 }
 
 /**
  * Generate success console message
  */
 function successMessage(message, type = 'Success') {
-	console.log(`[${greenBright(type)}] ${message}`);
+  console.log(`[${greenBright(type)}] ${message}`);
 }
 
 /**
  * Generate error console message
  */
 function errorMessage(message, type = 'Error') {
-	console.log(`[${redBright(type)}] ${message}`);
+  console.log(`[${redBright(type)}] ${message}`);
 }
 
 /**
  * Copy given source to destination
  */
 function copy(source, destination, options = { overwrite: true }) {
-	return jetpack.copy(source, destination, options);
+  return jetpack.copy(source, destination, options);
 }
 
 /**
  * CleanUp the build output
  */
 function cleanUp() {
-	if (!jetpack.exists(buildOutput)) {
-		return;
-	}
+  if (!jetpack.exists(buildOutput)) {
+    return;
+  }
 
-	const preserved = [
-		'webviews/**/*',
-		'game_resources/**/*',
-	];
+  const preserved = [
+    'webviews/**/*',
+    'game_resources/**/*',
+  ];
 
-	const removeablePaths = jetpack.find(buildOutput, {
-		matching: preserved.map((path) => `!${path}`),
-		directories: false
-	});
+  const removeablePaths = jetpack.find(buildOutput, {
+    matching: preserved.map((path) => `!${path}`),
+    directories: false
+  });
 
-	removeablePaths.forEach((path) => {
-		jetpack.remove(path);
-		errorMessage(path, 'Removed');
-	});
+  removeablePaths.forEach((path) => {
+    jetpack.remove(path);
+    errorMessage(path, 'Removed');
+  });
 }
 
 /**
  * Copy all static files they needed
  */
 function copyFiles() {
-	const prepareForCopy = [];
+  const prepareForCopy = [];
 
-	prepareForCopy.push(
-		// {
-		// 	from: jetpack.path('package.json'),
-		// 	to: jetpack.path(buildOutput, 'package.json')
-		// },
-		// {
-		// 	from: jetpack.path('.env'),
-		// 	to: jetpack.path(buildOutput, '.env')
-		// },
-		// {
-		// 	from: jetpack.path('conf.json'),
-		// 	to: jetpack.path(buildOutput, 'conf.json')
-		// }
-	);
+  prepareForCopy.push(
+    // {
+    // 	from: jetpack.path('package.json'),
+    // 	to: jetpack.path(buildOutput, 'package.json')
+    // },
+    // {
+    // 	from: jetpack.path('.env'),
+    // 	to: jetpack.path(buildOutput, '.env')
+    // },
+    // {
+    // 	from: jetpack.path('conf.json'),
+    // 	to: jetpack.path(buildOutput, 'conf.json')
+    // }
+  );
 
-	prepareForCopy.forEach((item) => {
-		copy(item.from, item.to);
-		successMessage(blueBright(`${item.from} -> ${item.to}`), 'Copied');
-	});
+  prepareForCopy.forEach((item) => {
+    copy(item.from, item.to);
+    successMessage(blueBright(`${item.from} -> ${item.to}`), 'Copied');
+  });
 }
 
 cleanUp();
@@ -101,70 +101,70 @@ cleanUp();
 
 // use terser only if it is the typescript compiler in use
 const terserMinify =
-	isProduction && !useSWC
-		? terser({
-				keep_classnames: true,
-				keep_fnames: true,
-				output: {
-					comments: false
-				}
-		  })
-		: [];
+  isProduction && !useSWC
+    ? terser({
+      keep_classnames: true,
+      keep_fnames: true,
+      output: {
+        comments: false
+      }
+    })
+    : [];
 
 const generateConfig = (options = {}) => {
-	const { isServer } = options;
+  const { isServer } = options;
 
-	const outputFile = isServer
-		? resolvePath([buildOutput, 'packages', 'core', 'index.js'])
-		: resolvePath([buildOutput, 'index.js']);
+  const outputFile = isServer
+    ? resolvePath([buildOutput, 'packages', 'core', 'index.js'])
+    : resolvePath([buildOutput, 'index.js']);
 
-	const serverPlugins = [];
-	const plugins = [terserMinify];
+  const serverPlugins = [];
+  const plugins = [terserMinify];
 
-	const external = [...builtinModules, ...localInstalledPackages];
-	const tsConfigPath = resolvePath([sourcePath, isServer ? 'server' : '', 'tsconfig.json']);
+  const external = [...builtinModules, ...localInstalledPackages];
+  const tsConfigPath = resolvePath([sourcePath, isServer ? 'server' : '', 'tsconfig.json']);
 
-	return {
-		input: resolvePath([sourcePath, isServer ? 'server' : '', 'index.ts']),
-		output: {
-			file: outputFile,
-			format: 'cjs'
-		},
-		plugins: [
-			tsPaths({ tsConfigPath }),
-			nodeResolvePlugin(),
-			jsonPlugin(),
-			commonjsPlugin(),
-			useSWC
-				? swc({
-						tsconfig: tsConfigPath,
-						minify: isProduction,
-						jsc: {
-							target: 'es2020',
-							parser: {
-								syntax: 'typescript',
-								dynamicImport: true,
-								decorators: true
-							},
-							transform: {
-								legacyDecorator: true,
-								decoratorMetadata: true
-							},
-							externalHelpers: true,
-							keepClassNames: true,
-							loose: true
-						}
-				  })
-				: typescriptPlugin({
-						check: false,
-						tsconfig: tsConfigPath
-				  }),
-			isServer ? [...serverPlugins] : null,
-			...plugins
-		],
-		external: isServer ? [...external] : null,
-		inlineDynamicImports: true
-	};
+  return {
+    input: resolvePath([sourcePath, isServer ? 'server' : '', 'index.ts']),
+    output: {
+      file: outputFile,
+      format: 'cjs'
+    },
+    plugins: [
+      tsPaths({ tsConfigPath }),
+      nodeResolvePlugin(),
+      jsonPlugin(),
+      commonjsPlugin(),
+      useSWC
+        ? swc({
+          tsconfig: tsConfigPath,
+          minify: isProduction,
+          jsc: {
+            target: 'es2020',
+            parser: {
+              syntax: 'typescript',
+              dynamicImport: true,
+              decorators: true
+            },
+            transform: {
+              legacyDecorator: true,
+              decoratorMetadata: true
+            },
+            externalHelpers: true,
+            keepClassNames: true,
+            loose: true
+          }
+        })
+        : typescriptPlugin({
+          check: false,
+          tsconfig: tsConfigPath
+        }),
+      isServer ? [...serverPlugins] : null,
+      ...plugins
+    ],
+    external: isServer ? [...external] : null,
+    inlineDynamicImports: true
+  };
 };
 
 export default [generateConfig({ isServer: false })];

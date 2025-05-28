@@ -8,6 +8,7 @@
     "devDependencies": {
         "@ragempcommunity/types-cef": "^2.1.9",
         "@ragempcommunity/types-client": "^2.1.9",
+        "@rollup/plugin-terser": "^0.4.4",
         "@swc/cli": "^0.6.0",
         "@swc/core": "^1.11.18",
         "@types/node": "^22.14.0",
@@ -50,13 +51,11 @@
         "moment": "^2.30.1",
         "moment-timezone": "^0.5.48",
         "node-sass-glob-importer": "^5.3.3",
-        "react-beautiful-dnd": "^13.1.1",
         "react-hot-toast": "^2.5.2",
         "react-i18next": "^15.4.1",
         "react-youtube": "^10.1.0",
         "rollup": "^4.39.0",
         "rollup-plugin-swc3": "^0.12.1",
-        "rollup-plugin-terser": "^7.0.2",
         "rollup-plugin-tsconfig-paths": "^1.5.2",
         "rollup-plugin-typescript2": "^0.36.0",
         "vite": "^6.2.5"
