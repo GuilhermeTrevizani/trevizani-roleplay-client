@@ -1,4 +1,4 @@
-import { Button, Col, Flex, Form, Input, InputNumber, Modal, Popconfirm, Row, Select, Table } from 'antd';
+import { Button, Checkbox, Col, Flex, Form, Input, InputNumber, Modal, Popconfirm, Row, Select, Table } from 'antd';
 import { Constants } from '../../../../src/base/constants';
 import { useEffect, useState } from 'react';
 import { t } from 'i18next';
@@ -22,6 +22,7 @@ interface StaffCompany {
   blipType: number;
   blipColor: number;
   currentEmployeeOnDuty: string;
+  entranceBenefit: boolean;
 };
 
 const StaffCompanyPage = () => {
@@ -69,6 +70,7 @@ const StaffCompanyPage = () => {
       blipType: 0,
       blipColor: 0,
       currentEmployeeOnDuty: '',
+      entranceBenefit: false,
     })
   };
 
@@ -88,7 +90,7 @@ const StaffCompanyPage = () => {
   const handleModalOk = () => {
     setLoading(true);
     emitEvent(Constants.STAFF_COMPANY_PAGE_SAVE, record.id, record.name, record.posX, record.posY, record.posZ, record.weekRentValue, record.type,
-      record.blipType, record.blipColor);
+      record.blipType, record.blipColor, record.entranceBenefit);
   };
 
   const goto = (id: string) => {
@@ -139,12 +141,6 @@ const StaffCompanyPage = () => {
       key: 'typeDisplay',
     },
     {
-      title: t('position'),
-      dataIndex: 'position',
-      key: 'position',
-      render: (_, record: StaffCompany) => `X: ${record.posX} | Y: ${record.posY} | Z: ${record.posZ}`,
-    },
-    {
       title: t('weekRent'),
       dataIndex: 'weekRentValue',
       key: 'weekRentValue',
@@ -173,6 +169,12 @@ const StaffCompanyPage = () => {
       key: 'employeeOnDuty',
     },
     {
+      title: t('entranceBenefit'),
+      dataIndex: 'entranceBenefit',
+      key: 'entranceBenefit',
+      render: (entranceBenefit: boolean) => t(entranceBenefit ? 'yes' : 'no'),
+    },
+    {
       title: t('options'),
       dataIndex: 'id',
       key: 'options',
@@ -190,7 +192,7 @@ const StaffCompanyPage = () => {
         >
           <Button size='small' danger>{t('delete')}</Button>
         </Popconfirm>
-        {record.owner != 'N/A' && <Popconfirm
+        {record.owner && <Popconfirm
           title={t('removeOwner')}
           description={t('removeOwnerConfirm')}
           onConfirm={() => removeOwner(id)}
@@ -279,6 +281,11 @@ const StaffCompanyPage = () => {
             <Form.Item label={t('blipColor')}>
               <InputNumber value={record.blipColor} onChange={(value) => setRecord({ ...record, blipColor: value })} style={{ width: '100%' }} />
             </Form.Item>
+          </Col>
+        </Row>
+        <Row gutter={16}>
+          <Col span={8}>
+            <Checkbox checked={record.entranceBenefit} onChange={(e) => setRecord({ ...record, entranceBenefit: e.target.checked })}>{t('entranceBenefit')}</Checkbox>
           </Col>
         </Row>
       </Form>

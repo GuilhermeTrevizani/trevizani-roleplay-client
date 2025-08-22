@@ -102,7 +102,7 @@ const StaffSearchCharacterPage = () => {
     //   companies: [],
     //   connectedTime: 1,
     //   evaluatorStaffUser: 'Trevizani',
-    //   faction: 'LSSD',
+    //   faction: 'LSPD',
     //   history: 'História',
     //   id: '1',
     //   items: [],
@@ -123,7 +123,7 @@ const StaffSearchCharacterPage = () => {
     //   ip: 'IP',
     //   socialClubName: 'Social Club',
     // });
-    // setUserStaff(Staff.ServerManager);
+    // setUserStaff(Staff.Management);
     // setLoading(false);
     configureEvent(Constants.STAFF_SEARCH_CHARACTER_PAGE_SHOW, (userStaffJson: string, userStaffFlagsJson: string, characterJson: string) => {
       setUserStaff(JSON.parse(userStaffJson));
@@ -283,13 +283,13 @@ const StaffSearchCharacterPage = () => {
       key: t('ip'),
       label: t('ip'),
       children: character.ip,
-      className: userStaff < Staff.LeadServerAdmin ? 'hidden' : '',
+      className: userStaff < Staff.LeadAdmin ? 'hidden' : '',
     },
     {
       key: t('socialClub'),
       label: t('socialClub'),
       children: character.socialClubName,
-      className: userStaff < Staff.LeadServerAdmin ? 'hidden' : '',
+      className: userStaff < Staff.LeadAdmin ? 'hidden' : '',
     },
   ];
 
@@ -301,11 +301,11 @@ const StaffSearchCharacterPage = () => {
         </Col>
         <Col span={18}>
           <Flex vertical={false} gap='small' justify='flex-end'>
-            {!character.deletedDate && !character.banishment && userStaff >= Staff.JuniorServerAdmin
+            {!character.deletedDate && !character.banishment && userStaff >= Staff.GameAdmin
               && <Button onClick={banCharacter} loading={loading}>{t('ban')}</Button>}
             {!character.deletedDate && character.nameChangeStatus !== CharacterNameChangeStatus.Done && userStaffFlags.includes(StaffFlag.CK)
               && <Button onClick={changeNameChangeStatus} loading={loading}>{t(character.nameChangeStatus === CharacterNameChangeStatus.Allowed ? 'block' : 'release')} {t('nameChange')}</Button>}
-            {!character.deletedDate && character.jailFinalDate && userStaff >= Staff.LeadServerAdmin
+            {!character.deletedDate && character.jailFinalDate && userStaff >= Staff.LeadAdmin
               && <Button onClick={removeFromJail} loading={loading}>{t('removeFromJail')}</Button>}
             {!character.deletedDate && (character.ckAvaliation || character.deathDate) && userStaffFlags.includes(StaffFlag.CK)
               && <Button onClick={removeFromCKOrCKAvaliation} loading={loading}>{t('removeFromCKOrCKAvaliation')}</Button>}
@@ -313,9 +313,9 @@ const StaffSearchCharacterPage = () => {
               && <Button onClick={applyCKAvaliation} loading={loading}>{t('applyCKAvaliation')}</Button>}
             {!character.deletedDate && !character.deathDate && userStaffFlags.includes(StaffFlag.CK)
               && <Button onClick={applyCK} loading={loading}>{t('applyCK')}</Button>}
-            {!character.deletedDate && character.ajailMinutes == 0 && userStaff >= Staff.JuniorServerAdmin
+            {!character.deletedDate && character.ajailMinutes == 0 && userStaff >= Staff.GameAdmin
               && <Button onClick={giveAjail} loading={loading}>{t('ajail')}</Button>}
-            {!character.deletedDate && userStaff >= Staff.JuniorServerAdmin
+            {!character.deletedDate && userStaff >= Staff.GameAdmin
               && <Button onClick={giveWarn} loading={loading}>{t('giveWarn')}</Button>}
           </Flex>
         </Col>

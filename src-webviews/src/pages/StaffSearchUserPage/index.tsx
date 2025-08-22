@@ -42,7 +42,7 @@ const StaffSearchUserPage = () => {
     // setUser({
     //   id: '1',
     //   name: 'Trevizani',
-    //   staff: Staff.JuniorServerAdmin,
+    //   staff: Staff.GameAdmin,
     //   staffFlags: [],
     //   punishments: [{
     //     character: 'Stephen Rundle',
@@ -104,19 +104,19 @@ const StaffSearchUserPage = () => {
           <Col span={4}>
             <Form.Item label={t('staff')}>
               <Select options={userStaffOptions} value={user.staff}
-                onChange={(value) => setUser({ ...user, staff: value })} disabled={userStaff < Staff.ServerManager} />
+                onChange={(value) => setUser({ ...user, staff: value })} disabled={userStaff < Staff.Management} />
             </Form.Item>
           </Col>
           <Col span={18}>
             <Form.Item label={t('flags')}>
               <Select mode='multiple' options={staffFlagOptions} value={user.staffFlags}
-                onChange={(value) => setUser({ ...user, staffFlags: value })} disabled={userStaff < Staff.ServerManager}
+                onChange={(value) => setUser({ ...user, staffFlags: value })} disabled={userStaff < Staff.Management}
                 optionFilterProp='label' />
             </Form.Item>
           </Col>
           <Col span={2}>
             <Form.Item label={' '}>
-              <Button style={{ width: '100%' }} onClick={saveUser} loading={loading} disabled={userStaff < Staff.ServerManager}>{t('save')}</Button>
+              <Button style={{ width: '100%' }} onClick={saveUser} loading={loading} disabled={userStaff < Staff.Management}>{t('save')}</Button>
             </Form.Item>
           </Col>
         </Row>

@@ -24,7 +24,6 @@ import CompanyCharactersPage from './pages/CompanyCharactersPage';
 import ConfiscationPage from './pages/ConfiscationPage';
 import CrackDenPage from './pages/CrackDenPage';
 import FactionStoragePage from './pages/FactionStoragePage';
-import FactionPage from './pages/FactionPage';
 import VehicleTuningPage from './pages/VehicleTuningPage';
 import TattoosPage from './pages/TattoosPage';
 import ClothesPage from './pages/ClothesPage';
@@ -36,9 +35,6 @@ import StaffCompanyPage from './pages/StaffCompanyPage';
 import StaffCrackDenPage from './pages/StaffCrackDenPage';
 import StaffCrackDenItemPage from './pages/StaffCrackDenItemPage';
 import StaffDoorPage from './pages/StaffDoorPage';
-import StaffFactionPage from './pages/StaffFactionPage';
-import StaffFactionMemberPage from './pages/StaffFactionMemberPage';
-import StaffFactionRankPage from './pages/StaffFactionRankPage';
 import StaffFactionStorageItemPage from './pages/StaffFactionStorageItemPage';
 import StaffFactionStoragePage from './pages/StaffFactionStoragePage';
 import StaffGiveItemPage from './pages/StaffGiveItemPage';
@@ -46,13 +42,11 @@ import StaffTruckerLocationPage from './pages/StaffTruckerLocationPage';
 import StaffTruckerLocationDeliveryPage from './pages/StaffTruckerLocationDeliveryPage';
 import InfoPage from './pages/InfoPage';
 import StaffInfoPage from './pages/StaffInfoPage';
-import StaffVehiclePage from './pages/StaffVehiclePage';
 import StaffJobPage from './pages/StaffJobPage';
 import StaffPropertyPage from './pages/StaffPropertyPage';
 import StaffSpotPage from './pages/StaffSpotPage';
 import StaffSearchUserPage from './pages/StaffSearchUserPage';
 import InventoryPage from './pages/InventoryPage';
-import StaffFactionFrequencyPage from './pages/StaffFactionFrequencyPage';
 import AjailInfoPage from './pages/AjailInfoPage';
 import StaffDealershipPage from './pages/StaffDealershipPage';
 import StaffDealershipVehiclePage from './pages/StaffDealershipVehiclePage';
@@ -64,7 +58,6 @@ import AnimationPage from './pages/AnimationPage';
 import ImagePage from './pages/ImagePage';
 import StaffPropertyEntrancePage from './pages/StaffPropertyEntrancePage';
 import PropertyBuildingPage from './pages/PropertyBuildingPage';
-import StaffItemTemplatePage from './pages/StaffItemTemplatePage';
 import StaffCompanyItemPage from './pages/StaffCompanyItemPage';
 import CompanyItemsPage from './pages/CompanyItemsPage';
 import StaffCompanyTuningPricePage from './pages/StaffCompanyTuningPricePage';
@@ -78,12 +71,9 @@ import TVPage from './pages/TVPage';
 import TVConfigPage from './pages/TVConfigPage';
 import MorguePage from './pages/MorguePage';
 import WeaponBodyPage from './pages/WeaponBodyPage';
-import StaffFactionEquipmentPage from './pages/StaffFactionEquipmentPage';
-import StaffFactionEquipmentItemPage from './pages/StaffFactionEquipmentItemPage';
 import PhonePage from './pages/PhonePage';
 import ForensicLaboratoryPage from './pages/ForensicLaboratoryPage';
 import PremiumStorePage from './pages/PremiumStorePage';
-import StaffDrugPage from './pages/StaffDrugPage';
 import SettingsPage from './pages/SettingsPage';
 import StatsPage from './pages/StatsPage';
 import HelpPage from './pages/HelpPage';
@@ -91,7 +81,6 @@ import StaffObjectPage from './pages/StaffObjectPage';
 import StaffSearchCharacterPage from './pages/StaffSearchCharacterPage';
 import DeathPage from './pages/DeathPage';
 import FirePage from './pages/FirePage';
-import PokerPage from './pages/PokerPage';
 import OutfitsPage from './pages/OutfitsPage';
 import AttributesPage from './pages/AttributesPage';
 import AnimationHelpPage from './pages/AnimationHelpPage';
@@ -139,7 +128,7 @@ function App() {
     <ConfigProvider
       theme={{
         algorithm: theme.darkAlgorithm,
-        token: { colorPrimary: '#8C3086' },
+        token: { colorPrimary: '#1097e6' },
       }}
     >
       <ChatPage visiblePages={visiblePages} />
@@ -166,7 +155,6 @@ function App() {
       {visiblePages.includes(Constants.CONFISCATION_PAGE) && <ConfiscationPage />}
       {visiblePages.includes(Constants.CRACK_DEN_PAGE) && <CrackDenPage />}
       {visiblePages.includes(Constants.FACTION_STORAGE_PAGE) && <FactionStoragePage />}
-      {visiblePages.includes(Constants.FACTION_PAGE) && <FactionPage />}
       {visiblePages.includes(Constants.VEHICLE_TUNING_PAGE) && <VehicleTuningPage />}
       {visiblePages.includes(Constants.TATTOOS_PAGE) && <TattoosPage />}
       {visiblePages.includes(Constants.CLOTHES_PAGE) && <ClothesPage />}
@@ -178,9 +166,6 @@ function App() {
       {visiblePages.includes(Constants.STAFF_CRACK_DEN_PAGE) && <StaffCrackDenPage />}
       {visiblePages.includes(Constants.STAFF_CRACK_DEN_ITEM_PAGE) && <StaffCrackDenItemPage />}
       {visiblePages.includes(Constants.STAFF_DOOR_PAGE) && <StaffDoorPage />}
-      {visiblePages.includes(Constants.STAFF_FACTION_PAGE) && <StaffFactionPage />}
-      {visiblePages.includes(Constants.STAFF_FACTION_MEMBER_PAGE) && <StaffFactionMemberPage />}
-      {visiblePages.includes(Constants.STAFF_FACTION_RANK_PAGE) && <StaffFactionRankPage />}
       {visiblePages.includes(Constants.STAFF_FACTION_STORAGE_PAGE) && <StaffFactionStoragePage />}
       {visiblePages.includes(Constants.STAFF_FACTION_STORAGE_ITEM_PAGE) && <StaffFactionStorageItemPage />}
       {visiblePages.includes(Constants.STAFF_GIVE_ITEM_PAGE) && <StaffGiveItemPage />}
@@ -188,12 +173,10 @@ function App() {
       {visiblePages.includes(Constants.STAFF_TRUCKER_LOCATION_DELIVERY_PAGE) && <StaffTruckerLocationDeliveryPage />}
       {visiblePages.includes(Constants.STAFF_INFO_PAGE) && <StaffInfoPage />}
       {visiblePages.includes(Constants.INFO_PAGE) && <InfoPage />}
-      {visiblePages.includes(Constants.STAFF_VEHICLE_PAGE) && <StaffVehiclePage />}
       {visiblePages.includes(Constants.STAFF_JOB_PAGE) && <StaffJobPage />}
       {visiblePages.includes(Constants.STAFF_PROPERTY_PAGE) && <StaffPropertyPage />}
       {visiblePages.includes(Constants.STAFF_SPOT_PAGE) && <StaffSpotPage />}
       {visiblePages.includes(Constants.INVENTORY_PAGE) && <InventoryPage />}
-      {visiblePages.includes(Constants.STAFF_FACTION_FREQUENCY_PAGE) && <StaffFactionFrequencyPage />}
       {visiblePages.includes(Constants.AJAIL_INFO_PAGE) && <AjailInfoPage />}
       {visiblePages.includes(Constants.STAFF_DEALERSHIP_PAGE) && <StaffDealershipPage />}
       {visiblePages.includes(Constants.STAFF_DEALERSHIP_VEHICLE_PAGE) && <StaffDealershipVehiclePage />}
@@ -203,7 +186,6 @@ function App() {
       {visiblePages.includes(Constants.IMAGE_PAGE) && <ImagePage />}
       {visiblePages.includes(Constants.STAFF_PROPERTY_ENTRANCE_PAGE) && <StaffPropertyEntrancePage />}
       {visiblePages.includes(Constants.PROPERTY_BUILDING_PAGE) && <PropertyBuildingPage />}
-      {visiblePages.includes(Constants.STAFF_ITEM_TEMPLATE_PAGE) && <StaffItemTemplatePage />}
       {visiblePages.includes(Constants.STAFF_COMPANY_ITEM_PAGE) && <StaffCompanyItemPage />}
       {visiblePages.includes(Constants.COMPANY_ITEMS_PAGE) && <CompanyItemsPage />}
       {visiblePages.includes(Constants.STAFF_COMPANY_TUNING_PRICE_PAGE) && <StaffCompanyTuningPricePage />}
@@ -217,12 +199,9 @@ function App() {
       {visiblePages.includes(Constants.TV_CONFIG_PAGE) && <TVConfigPage />}
       {visiblePages.includes(Constants.MORGUE_PAGE) && <MorguePage />}
       {visiblePages.includes(Constants.WEAPON_BODY_PAGE) && <WeaponBodyPage />}
-      {visiblePages.includes(Constants.STAFF_FACTION_EQUIPMENT_PAGE) && <StaffFactionEquipmentPage />}
-      {visiblePages.includes(Constants.STAFF_FACTION_EQUIPMENT_ITEM_PAGE) && <StaffFactionEquipmentItemPage />}
       {visiblePages.includes(Constants.PHONE_PAGE) && <PhonePage />}
       {visiblePages.includes(Constants.FORENSIC_LABORATORY_PAGE) && <ForensicLaboratoryPage />}
       {visiblePages.includes(Constants.PREMIUM_STORE_PAGE) && <PremiumStorePage />}
-      {visiblePages.includes(Constants.STAFF_DRUG_PAGE) && <StaffDrugPage />}
       {visiblePages.includes(Constants.SETTINGS_PAGE) && <SettingsPage />}
       {visiblePages.includes(Constants.STATS_PAGE) && <StatsPage />}
       {visiblePages.includes(Constants.HELP_PAGE) && <HelpPage />}
@@ -231,7 +210,6 @@ function App() {
       {visiblePages.includes(Constants.STAFF_SEARCH_CHARACTER_PAGE) && <StaffSearchCharacterPage />}
       {visiblePages.includes(Constants.DEATH_PAGE) && <DeathPage />}
       {visiblePages.includes(Constants.FIRE_PAGE) && <FirePage />}
-      {visiblePages.includes(Constants.POKER_PAGE) && <PokerPage />}
       {visiblePages.includes(Constants.OUTFITS_PAGE) && <OutfitsPage />}
       {visiblePages.includes(Constants.ATTRIBUTES_PAGE) && <AttributesPage />}
       {visiblePages.includes(Constants.ANIMATION_HELP_PAGE) && <AnimationHelpPage />}

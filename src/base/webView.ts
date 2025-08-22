@@ -33,7 +33,7 @@ export const configureEvent = (eventName: string, listener: (...args: any[]) => 
 };
 
 export const hasPageOpened = () => {
-  const index = currentPages.findIndex(x => x != Constants.CHAT_PAGE && x != Constants.DEATH_PAGE);
+  const index = currentPages.findIndex(x => x != Constants.CHAT_PAGE && x != Constants.DEATH_PAGE && x != Constants.ANIMATION_HELP_PAGE);
   return index != -1;
 };
 

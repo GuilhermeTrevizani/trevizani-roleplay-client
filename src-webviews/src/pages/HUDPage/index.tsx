@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { t } from 'i18next';
 import { configureEvent, emitEvent, formatValue } from '../../services/util';
 import './index.scss'
+import logo from '../../assets/logo.png'
 
 interface Minimap {
   bottom: number;
@@ -117,6 +118,26 @@ const HUDPage = () => {
         </div>}
       </div>}
       <div className='bottomSecondRow'>
+        <div className='location'>
+          <div className='locationIcon'>{direction}</div>
+          <div className='locationInfo'>{street}</div>
+        </div>
+      </div>
+    </div>}
+
+    <div className='rightTop'>
+      <div className='topFirstRow'>
+        {adminDuty && <div className='admin'>
+          <div className='adminIcon'><i className="fa fa-gavel"></i></div>
+          <div className='adminInfo'>{t('adminDuty')}</div>
+        </div>}
+        <div className='server'>
+          <div className='serverIcon'><i className='fa fa-user' /></div>
+          <div className='serverInfo'>{playerCount}/{Constants.MAX_PLAYERS}</div>
+        </div>
+      </div>
+
+      <div className='topSecondRow'>
         <div className='health'>
           <div className='healthIcon'><i className='fa fa-heart' /></div>
           <div className='healthInfo'>{health}</div>
@@ -134,31 +155,8 @@ const HUDPage = () => {
           <div className='bankInfo'>${formatValue(bank)}</div>
         </div>
       </div>
-      <div className='bottomThirdRow'>
-        <div className='location'>
-          <div className='locationIcon'><i className='fa fa-location-dot' /></div>
-          <div className='locationInfo'>{street}</div>
-        </div>
-        <div className='compass'>
-          <div className='compassIcon'><i className='fa fa-compass' /></div>
-          <div className='compassInfo'>{direction}</div>
-        </div>
-      </div>
-    </div>}
 
-    <div className='rightTop'>
-      <div className='topFirstRow'>
-        {adminDuty && <div className='admin'>
-          <div className='adminIcon'><i className="fa fa-gavel"></i></div>
-          <div className='adminInfo'>{t('adminDuty')}</div>
-        </div>}
-        <div className='server'>
-          <div className='serverIcon'><i className='fa fa-user' /></div>
-          <div className='serverInfo'>{Constants.SERVER_NAME} • {playerCount}/{Constants.MAX_PLAYERS}</div>
-        </div>
-      </div>
-
-      {showWeapon && <div className='topSecondRow'>
+      {showWeapon && <div className='topThirdRow'>
         <div className='firemode'>
           <div className='firemodeIcon'><i className='fa fa-shuffle' /></div>
           <div className='firemodeInfo'>{firingMode}</div>
@@ -168,6 +166,10 @@ const HUDPage = () => {
           <div className='ammoInfo'>{ammoInClip}/{totalAmmo}</div>
         </div>
       </div>}
+    </div>
+
+    <div className='rightBottom'>
+      <img src={logo} className='logo' />
     </div>
   </div>
 };

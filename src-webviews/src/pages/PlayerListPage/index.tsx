@@ -27,7 +27,7 @@ const PlayerListPage = () => {
   });
 
   useEffect(() => {
-    // setFooter({ // INICIO TESTE LISTA
+    // setFooter({
     //   fire: 6,
     //   mechanic: 15,
     //   police: 18,
@@ -41,7 +41,7 @@ const PlayerListPage = () => {
     //     name: 'Nome Sobrenome ' + index,
     //   })
     // }
-    // setPlayers(plys) // FINAL TESTE LISTA
+    // setPlayers(plys)
     configureEvent(Constants.PLAYER_LIST_PAGE_SHOW, (playersJson: string, footerJson: string) => {
       setPlayers(JSON.parse(playersJson));
       setFooter(JSON.parse(footerJson));
@@ -92,11 +92,10 @@ const PlayerListPage = () => {
           </tbody>
         </table>
       </div>
-      <div className='tipMouse'>{t('cursorTip')}</div>
     </div>
     <div className='footer'>
       <span>{t('onDuty')}:</span><br />
-      <span className='onduty'>{t('lssd')}: {footer.police}, {t('lsfd')}: {footer.fire} {t('mechanics')}: {footer.mechanic}, {t('taxiDrivers')}: {footer.taxiDriver}</span>
+      <span className='onduty'>{t('lspd')}: {footer.police}, {t('lsfd')}: {footer.fire} {t('mechanics')}: {footer.mechanic}, {t('taxiDrivers')}: {footer.taxiDriver}</span>
     </div>
   </div>
 };

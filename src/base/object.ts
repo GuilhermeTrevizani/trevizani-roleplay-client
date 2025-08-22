@@ -45,13 +45,14 @@ mp.events.add('entityStreamOut', (entity) => {
     stopTv(entity.remoteId);
 });
 
-// I can't release TV system
-// Use this (https://wiki.rage.mp/wiki/Render_Targets) to implement TODOs below
-// Feel free to contribute with a PR
-
 const createRenderTarget = (name: string, model: number) => {
-  // TODO: Implement here
-  return -1;
+  if (!mp.game.ui.isNamedRendertargetRegistered(name))
+    mp.game.ui.registerNamedRendertarget(name, false);
+
+  if (!mp.game.ui.isNamedRendertargetLinked(model))
+    mp.game.ui.linkNamedRendertarget(model);
+
+  return mp.game.ui.getNamedRendertargetRenderId(name);
 }
 
 const startTv = (model: number, tv: any, remoteId: number) => {
@@ -69,7 +70,12 @@ const startTv = (model: number, tv: any, remoteId: number) => {
 
 mp.events.add('render', () => {
   tvs.forEach((tv) => {
-    // TODO: Implement here
+    mp.game.ui.setTextRenderId(tv.render);
+    const dict = tv.browser.headlessTextureDict;
+    const texture = tv.browser.headlessTextureName;
+    const heightScale = tv.browser.headlessTextureHeightScale;
+    mp.game.graphics.drawSprite(dict, texture, 0.5, 0.5, 1, heightScale, 0, 255, 255, 255, 255, false);
+    mp.game.ui.setTextRenderId(1);
   });
 });
 
@@ -78,7 +84,9 @@ const stopTv = (remoteId: number) => {
   if (!tv)
     return;
 
-  // TODO: Implement here
+  if (mp.game.ui.isNamedRendertargetRegistered(tv.texture))
+    mp.game.ui.releaseNamedRendertarget(tv.texture);
+
   tv.browser.destroy();
   tvs.splice(tvs.indexOf(tv), 1);
 }

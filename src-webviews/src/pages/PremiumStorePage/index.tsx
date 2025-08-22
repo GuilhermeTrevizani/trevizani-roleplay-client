@@ -74,7 +74,7 @@ const PremiumStorePage = () => {
     <Row gutter={16}>
       <Col span={24}>
         <Title level={5}>
-          Você possui {formatValue(premiumPoints)} LS Points. Para adquirir clique <a href='https://ucp.ls-chronicles.com.br/premium' target='_blank'>aqui</a>.
+          Você possui {formatValue(premiumPoints)} Premium Points. Para adquirir clique <a href='https://ucp.trevizani.com.br/premium' target='_blank'>aqui</a>.
         </Title>
       </Col>
     </Row>

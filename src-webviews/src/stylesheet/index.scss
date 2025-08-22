@@ -5,9 +5,9 @@
 @import '../../../node_modules/@fortawesome/fontawesome-free/css/all.min.css';
 @import '../../../node_modules/@flaticon/flaticon-uicons/css/all/all.css';
 
-$primary-color: #8c3086;
-$secondary-color: #613673;
-$terciary-color: #f279b2;
+$primary-color: #1097e6;
+$secondary-color: #066398;
+$terciary-color: #2cacf7;
 
 body {
     user-select: none;
@@ -235,7 +235,7 @@ input:checked + .slider:before {
 
 ::-webkit-scrollbar-thumb {
     border-radius: 100px;
-    background: rgba(156, 54, 181, 0.9);
+    background: rgba(16, 151, 230, 0.9);
 }
 
 ::-webkit-scrollbar-thumb:hover {

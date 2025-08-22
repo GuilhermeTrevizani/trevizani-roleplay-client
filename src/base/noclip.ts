@@ -1,8 +1,13 @@
 import { distanceTo } from '@/base/cursor';
-import Utils from './Utils';
 import { Constants } from '@/base/constants';
 
 const player = mp.players.local;
+
+const Rad2Deg = 180 / Math.PI;
+
+function clamp(num: number, min: number, max: number): number {
+  return Math.min(Math.max(num, min), max);
+}
 
 const radiansToDirection = (vet: Vector3) => {
   const adjustedRotation = new mp.Vector3((Math.PI / 180) * vet.x, (Math.PI / 180) * vet.y, (Math.PI / 180) * vet.z);
@@ -58,7 +63,7 @@ export default class FlyController {
     if (this._freecam) {
       this._cam = mp.cameras.new('DEFAULT_SCRIPTED_CAMERA',
         new mp.Vector3(player.position.x, player.position.y, player.position.z + 1),
-        new mp.Vector3(player.getRotation(2).x * Utils.Rad2Deg, player.getRotation(2).y * Utils.Rad2Deg, player.getRotation(2).z * Utils.Rad2Deg),
+        new mp.Vector3(player.getRotation(2).x * Rad2Deg, player.getRotation(2).y * Rad2Deg, player.getRotation(2).z * Rad2Deg),
         50
       );
       this._cam!.setActive(true);
@@ -104,13 +109,13 @@ export default class FlyController {
     let speed = this._speed;
 
     if (mp.game.controls.isDisabledControlPressed(0, 241)) { // INPUT_CURSOR_SCROLL_UP
-      this._speed = Utils.clamp(this._speed + 0.01, 0.01, 10);
+      this._speed = clamp(this._speed + 0.01, 0.01, 10);
     }
 
     if (mp.game.controls.isDisabledControlPressed(0, 242)) { // INPUT_CURSOR_SCROLL_DOWN
-      this._speed = Utils.clamp(this._speed - 0.01, 0.01, 10);
+      this._speed = clamp(this._speed - 0.01, 0.01, 10);
     }
-    
+
     // pos movement
     const posMovementX = mp.game.controls.getDisabledControlNormal(0, 218);
     const posMovementY = mp.game.controls.getDisabledControlNormal(0, 219);

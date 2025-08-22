@@ -16,8 +16,9 @@ mp.events.add('StaffCompany:Show', (companiesJson: string, typesJson: string) =>
     callRemoteEvent('StaffCompanyGoto', id);
   });
   configureEvent(Constants.STAFF_COMPANY_PAGE_SAVE, (id: string, name: string, posX: number, posY: number, posZ: number,
-    weekRentValue: number, type: number, blipType: number, blipColor: number) => {
-    callRemoteEvent('StaffCompanySave', id, name, new mp.Vector3(posX, posY, posZ), weekRentValue, type, blipType, blipColor);
+    weekRentValue: number, type: number, blipType: number, blipColor: number, entranceBenefit: boolean) => {
+    callRemoteEvent('StaffCompanySave', id, name, new mp.Vector3(posX, posY, posZ), weekRentValue, type, blipType, blipColor,
+      entranceBenefit);
   });
   configureEvent(Constants.STAFF_COMPANY_PAGE_REMOVE_OWNER, (id: string) => {
     callRemoteEvent('StaffCompanyRemoveOwner', id);

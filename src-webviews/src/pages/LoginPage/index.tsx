@@ -5,7 +5,7 @@ import './style.scss';
 import { configureEvent, emitEvent } from '../../services/util';
 
 const LoginPage = () => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const requestDiscordToken = () => {
     setLoading(true);
@@ -16,8 +16,6 @@ const LoginPage = () => {
     configureEvent(Constants.WEB_VIEW_END_LOADING, () => {
       setLoading(false);
     });
-
-    emitEvent(Constants.LOGIN_REQUEST_DISCORD_TOKEN);
   }, []);
 
   return (

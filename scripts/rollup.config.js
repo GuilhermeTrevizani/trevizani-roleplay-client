@@ -8,7 +8,7 @@ import builtinModules from 'builtin-modules';
 import commonjsPlugin from '@rollup/plugin-commonjs';
 import tsPaths from 'rollup-plugin-tsconfig-paths';
 import typescriptPlugin from 'rollup-plugin-typescript2';
-import { terser } from "@rollup/plugin-terser";
+import terser from "@rollup/plugin-terser";
 
 const buildOutput = 'C:\\RAGEMP\\server-files\\client_packages';
 const isProduction = false;

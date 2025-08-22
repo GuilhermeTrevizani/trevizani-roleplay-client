@@ -24,6 +24,7 @@ interface UCPSettings {
   staffToggle: boolean;
   factionWalkieTalkieToggle: boolean;
   receiveSMSDiscord: number;
+  receiveNotificationsOnDiscord: boolean;
 };
 
 interface Character {
@@ -53,6 +54,7 @@ const SettingsPage = () => {
     staffToggle: false,
     factionWalkieTalkieToggle: false,
     receiveSMSDiscord: 1,
+    receiveNotificationsOnDiscord: true,
   });
   const [character, setCharacter] = useState<Character>({
     isPremium: false,
@@ -171,6 +173,11 @@ const SettingsPage = () => {
       <Row gutter={16}>
         <Col span={24}>
           <Checkbox checked={settings.ambientSoundToggle} onChange={(e) => setSettings({ ...settings, ambientSoundToggle: e.target.checked })}>{t('ambientSoundToggle')}</Checkbox>
+        </Col>
+      </Row>
+      <Row gutter={16}>
+        <Col span={24}>
+          <Checkbox checked={settings.receiveNotificationsOnDiscord} onChange={(e) => setSettings({ ...settings, receiveNotificationsOnDiscord: e.target.checked })}>{t('receiveNotificationsOnDiscord')}</Checkbox>
         </Col>
       </Row>
       {character.isPremium && <Row gutter={16}>

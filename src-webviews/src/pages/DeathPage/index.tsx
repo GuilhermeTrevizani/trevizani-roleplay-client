@@ -2,7 +2,6 @@ import { Constants } from '../../../../src/base/constants';
 import { useEffect, useState } from 'react';
 import { configureEvent, emitEvent } from '../../services/util';
 import './style.scss';
-import { t } from 'i18next';
 
 enum CharacterWound {
   None = 1,
@@ -69,7 +68,6 @@ const DeathPage = () => {
         {seconds > 0 && <span>Para respawnar, aguarde <strong>{formatTime(seconds)}</strong>.</span>}
         {seconds <= 0 && <span>Você já pode respawnar.</span>}
         <br />
-        <span>{t('cursorTip')}</span>
         <div className='buttons'>
           <button className='button' disabled={loading || seconds > 0} onClick={acceptPlayerKill}>Aceitar Morte (Player Kill)</button>
           <button className='button' disabled={loading || seconds > 0} onClick={acceptCharacterKill}>Aceitar Morte (Character Kill)</button>

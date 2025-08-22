@@ -8,7 +8,6 @@ import { configureEvent, emitEvent, removeAccents } from '../../services/util';
 interface FactionVehicle {
   id: string;
   model: string;
-  name: string;
   plate: string;
   inChargeCharacterName: string;
   description: string;
@@ -53,7 +52,7 @@ const FactionVehiclesPage = () => {
 
     const newSearch = removeAccents(search);
     const filteredItems = originalItems.filter(x =>
-      removeAccents(x.model).includes(newSearch) || removeAccents(x.name).includes(newSearch)
+      removeAccents(x.model).includes(newSearch)
       || removeAccents(x.plate).includes(newSearch) || removeAccents(x.description).includes(newSearch)
       || removeAccents(x.inChargeCharacterName).includes(newSearch)
     );
@@ -65,11 +64,6 @@ const FactionVehiclesPage = () => {
       title: t('model'),
       dataIndex: 'model',
       key: 'model',
-    },
-    {
-      title: t('name'),
-      dataIndex: 'name',
-      key: 'name',
     },
     {
       title: t('plate'),

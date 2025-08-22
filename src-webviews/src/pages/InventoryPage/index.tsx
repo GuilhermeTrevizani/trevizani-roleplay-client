@@ -83,7 +83,7 @@ const InventoryPage = () => {
             className='inventoryItemWrapper'
           >
             <Draggable key={`${i}-${side}`} id={`${i}-${side}`} index={i} children={<Popover content={<>
-              <span>{t('weight')}: <strong>{formatValue(weight * quantity, 2)} kg</strong></span>
+              <span>{t('weight')}: <strong>{formatValue(weight * quantity)} g</strong></span>
               {extra && <><br /><span dangerouslySetInnerHTML={{ __html: extra }}></span></>}
             </>} title={name}>
               <div
@@ -304,16 +304,6 @@ const InventoryPage = () => {
     //     weight: 0.13,
     //   },
     //   {
-    //     name: 'Chave de Propriedade',
-    //     quantity: 1,
-    //     slot: 2,
-    //     inUse: false,
-    //     id: '2',
-    //     image: 'https://i.imgur.com/IEDSv1j.png',
-    //     isUsable: false,
-    //     weight: 0.13,
-    //   },
-    //   {
     //     name: 'Dinheiro',
     //     quantity: 18199,
     //     slot: 4,
@@ -333,17 +323,6 @@ const InventoryPage = () => {
     //     image: 'https://i.imgur.com/hxlP7Ib.png',
     //     isUsable: false,
     //     weight: 0.13,
-    //   },
-    //   {
-    //     name: 'Chave de Veículo',
-    //     quantity: 1,
-    //     slot: 6,
-    //     inUse: false,
-    //     id: '5',
-    //     image: 'https://i.imgur.com/bkYGL8a.png',
-    //     isUsable: false,
-    //     weight: 0.13,
-    //     extra: 'Fechadura: <strong>13</strong>'
     //   },
     //   {
     //     name: 'Rádio Comunicador',
@@ -523,8 +502,8 @@ const InventoryPage = () => {
             <div className='titleLine'>
               <span className='inventoryCardTitle'>{leftTitle}</span>
               <div className='weightTextContainer'>
-                <span className='weightText bold'>{formatValue(sumLeftItemsWeight(), 2)}</span>
-                <span className='weightText'> / {formatValue(maxLeftItemsWeight, 2)} kg</span>
+                <span className='weightText bold'>{formatValue(sumLeftItemsWeight())}</span>
+                <span className='weightText'> / {formatValue(maxLeftItemsWeight)} g</span>
               </div>
             </div>
             <div className='weightContainer'>

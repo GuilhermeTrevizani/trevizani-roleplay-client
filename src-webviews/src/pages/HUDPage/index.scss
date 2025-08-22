@@ -5,7 +5,6 @@
     -moz-user-select: none;
     -ms-user-select: none;
 
-    // VARIAVEIS DE CORES
     $moneyinfo: rgba(0, 190, 72, 1);
     $moneyicon: rgba(0, 156, 59, 1);
     $generalinfo: rgba(52, 58, 64, 1);
@@ -24,9 +23,15 @@
         transform: translateY(-100%);
     }
 
-    // -- INICIO ITENS COLORIDOS DA HUD --
-    .bottomSecondRow {
-        display: flex;
+    .rightBottom {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+    }
+
+    .logo {
+        opacity: 0.2;
+        width: 3.5vh;
     }
 
     .health,
@@ -92,16 +97,15 @@
         justify-content: center;
         align-items: center;
     }
-    // -- FINAL ITENS COLORIDOS DA HUD --
 
-    // -- INICIO ITENS CINZAS DA HUD --
     .topFirstRow,
-    .topSecondRow {
+    .topSecondRow,
+    .topThirdRow {
         display: flex;
         justify-content: flex-end;
     }
     .bottomFirstRow,
-    .bottomThirdRow {
+    .bottomSecondRow {
         display: flex;
     }
 
@@ -111,8 +115,7 @@
     .ammo,
     .odometer,
     .fuelmeter,
-    .location,
-    .compass {
+    .location {
         box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.3);
         border-radius: 12px;
         display: flex;
@@ -125,8 +128,7 @@
     .ammoInfo,
     .odometerInfo,
     .fuelmeterInfo,
-    .locationInfo,
-    .compassInfo {
+    .locationInfo {
         background-color: $generalinfo;
         color: white;
         padding: 7px 5px 7px 5px;
@@ -144,8 +146,7 @@
     .ammoIcon,
     .odometerIcon,
     .fuelmeterIcon,
-    .locationIcon,
-    .compassIcon {
+    .locationIcon {
         background-color: $generalicon;
         color: white;
         border-radius: 5px 0px 0px 5px;
