@@ -249,7 +249,7 @@ setInterval(() => {
   const isDriverValue = isDriver();
   if (isDriverValue) {
     const fuel = player.vehicle.getVariable(Constants.VEHICLE_META_DATA_FUEL) as number;
-    webView.call(Constants.HUD_PAGE_UPDATE_VEHICLE_INFO, fuel, player.vehicle.getSpeed() * 3.6, cruiseSpeed > 0);
+    webView.call(Constants.HUD_PAGE_UPDATE_VEHICLE_INFO, fuel, player.vehicle.getSpeed() * Constants.MPH_CONVERSION, cruiseSpeed > 0);
   }
 
   webView.call(Constants.HUD_PAGE_UPDATE_IN_VEHICLE, isDriverValue);
@@ -508,11 +508,11 @@ function toggleCruise() {
 
   if (cruiseSpeed == 0) {
     const speed = player.vehicle.getSpeed();
-    if (speed <= 19.5 && speed > 0 && player.vehicle.gear > 0) { // 70 KM/H
+    if (speed * Constants.MPH_CONVERSION <= 40 && speed > 0 && player.vehicle.gear > 0) {
       cruiseSpeed = speed;
       mp.events.add('render', renderCruise);
     } else {
-      chatNotifiy('Veículo precisa estar em movimento e abaixo de 70 km/h.', 'error');
+      chatNotifiy('Veículo precisa estar em movimento e abaixo de 40 MPH.', 'error');
     }
   } else {
     cruiseSpeed = 0;

@@ -518,4 +518,5 @@ export const Constants = {
   O_KEY: 79,
   F7_KEY: 118,
   F8_KEY: 119,
+  MPH_CONVERSION: 2.236936
 }
