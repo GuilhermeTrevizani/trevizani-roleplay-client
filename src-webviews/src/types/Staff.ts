@@ -5,5 +5,5 @@ export enum Staff {
   LeadAdmin = 15,
   HeadAdmin = 20,
   Management = 254,
-  CEO = 255,
+  Founder = 255,
 };
