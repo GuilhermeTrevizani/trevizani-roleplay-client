@@ -31,8 +31,8 @@ mp.events.add(Constants.CHAT_PAGE_SEND_MESSAGE, (text: string, color: string) =>
   mp.console.logInfo(sanitizeString(text), true);
 });
 
-mp.events.add(Constants.CHAT_PAGE_CONFIGURE, async (timeStamp: boolean, fontType: number, fontSize: number, lines: number) => {
-  webView.call(Constants.CHAT_PAGE_CONFIGURE, timeStamp, fontType, fontSize, lines);
+mp.events.add(Constants.CHAT_PAGE_CONFIGURE, async (timeStamp: boolean, fontType: number, fontSize: number, lines: number, commandsJson: string) => {
+  webView.call(Constants.CHAT_PAGE_CONFIGURE, timeStamp, fontType, fontSize, lines, commandsJson);
 });
 
 mp.events.add(Constants.CHAT_PAGE_NOTIFY, chatNotifiy);

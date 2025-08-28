@@ -5,8 +5,12 @@ import { Modal } from 'antd';
 import { t } from 'i18next';
 import './style.scss';
 import { configureEvent, emitEvent, formatTime } from '../../services/util';
-import { commands, CommandSuggestion } from './commands';
 import toast, { Toaster } from 'react-hot-toast';
+
+export interface CommandSuggestion {
+  command: string;
+  description: string;
+}
 
 const ChatPage = ({ visiblePages }: { visiblePages: string[] }) => {
   const maxLength = 265;
@@ -29,6 +33,7 @@ const ChatPage = ({ visiblePages }: { visiblePages: string[] }) => {
   const chatActiveRef = useRef(false);
   const canInputRef = useRef(false);
   const typingRef = useRef(typing);
+  const [commands, setCommands] = useState<CommandSuggestion[]>([]);
   const [commandsSuggestions, setCommandsSuggestions] = useState<CommandSuggestion[]>([]);
 
   const _MAX_INPUT_HISTORIES = 5;
@@ -149,7 +154,7 @@ const ChatPage = ({ visiblePages }: { visiblePages: string[] }) => {
     // scrollMessagesList('bottom');
     // chatActiveRef.current = true;
     // canInputRef.current = true;
-    configureEvent(Constants.CHAT_PAGE_CONFIGURE, (timeStamp: boolean, fontType: number, fontSize: number, chatLines: number) => {
+    configureEvent(Constants.CHAT_PAGE_CONFIGURE, (timeStamp: boolean, fontType: number, fontSize: number, chatLines: number, commandsJson: string) => {
       setTimeStampActive(timeStamp);
       setFontType(fontType);
       setFontSize(fontSize);
@@ -159,6 +164,7 @@ const ChatPage = ({ visiblePages }: { visiblePages: string[] }) => {
       setLineHeight(lineHeightAux);
       setMessagesListHeight(messagesListHeightAux);
       scrollMessagesList('bottom');
+      setCommands(JSON.parse(commandsJson));
     });
 
     configureEvent(Constants.CHAT_PAGE_CLEAR_MESSAGES, () => {
