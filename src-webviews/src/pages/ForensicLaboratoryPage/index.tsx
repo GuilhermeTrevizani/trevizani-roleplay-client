@@ -4,9 +4,25 @@ import { Constants } from '../../../../src/base/constants';
 import { t } from 'i18next';
 import { configureEvent, emitEvent } from '../../services/util';
 import SelectOption from '../../types/SelectOption';
-import { ForensicTestItemType } from '../../types/ForensicTestItemType';
-import ForensicTestItem from '../../types/ForensicTestItem';
 import { ColumnsType } from 'antd/es/table';
+
+enum ForensicTestItemType {
+  Blood = 1,
+  BulletShell = 2,
+};
+
+interface ForensicTestItem {
+  type: ForensicTestItemType;
+  originConfiscationItemId: string;
+  targetConfiscationItemId?: string;
+  firstItem: string;
+  secondItem?: string;
+  identifier: string;
+  firstConfiscation?: string;
+  secondConfiscation?: string;
+  firstConfiscationItems: SelectOption[];
+  secondConfiscationItems: SelectOption[];
+};
 
 const ForensicLaboratoryPage = () => {
   const [loading, setLoading] = useState(true);
