@@ -235,6 +235,7 @@ setInterval(() => {
   webView.call(Constants.HUD_PAGE_UPDATE_HEALTH_ARMOR, player.getHealth(), player.getArmour());
   webView.call(Constants.HUD_PAGE_UPDATE_MONEY, money);
   webView.call(Constants.HUD_PAGE_UPDATE_BANK, bank);
+  webView.call(Constants.HUD_PAGE_UPDATE_ADMIN_DUTY, mp.storage.data.aduty);
 
   if (streetName != '' && zoneName != '') {
     const direction = player.vehicle ? player.vehicle.getHeading() : player.getHeading();
@@ -845,7 +846,6 @@ mp.events.add('ViewBanishmentInfo', (banishmentJson: string) => {
 
 mp.events.add('ToggleAduty', (toggle: boolean) => {
   mp.storage.data.aduty = toggle;
-  webView.call(Constants.HUD_PAGE_UPDATE_ADMIN_DUTY, toggle);
 });
 
 function getMinimap() {
