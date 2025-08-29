@@ -11,8 +11,8 @@ mp.events.add('Info:Show', (json: string) => {
     setPages([], [Constants.INFO_PAGE]);
     toggleView(false);
   });
-  configureEvent(Constants.INFO_PAGE_SAVE, (days: number, message: string, image: boolean) => {
-    callRemoteEvent('InfoSave', days, message, image);
+  configureEvent(Constants.INFO_PAGE_SAVE, (message: string, image: string) => {
+    callRemoteEvent('InfoSave', message, image);
   });
   configureEvent(Constants.INFO_PAGE_REMOVE, (id: string) => {
     callRemoteEvent('InfoRemove', id);

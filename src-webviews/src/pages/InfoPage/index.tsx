@@ -1,10 +1,16 @@
-import { Button, Checkbox, Col, Flex, Form, Input, InputNumber, Modal, Popconfirm, Row, Table } from 'antd';
+import { Button, Col, Flex, Form, Input, Modal, Popconfirm, Row, Table } from 'antd';
 import { Constants } from '../../../../src/base/constants';
 import { useEffect, useState } from 'react';
 import { t } from 'i18next';
 import { ColumnsType } from 'antd/es/table';
 import { configureEvent, emitEvent, formatDateTime, removeAccents } from '../../services/util';
-import Info from '../../types/Info';
+
+interface Info {
+  id: string;
+  registerDate: Date;
+  message: string;
+  image?: string;
+};
 
 const InfoPage = () => {
   const [loading, setLoading] = useState(true);
@@ -32,11 +38,9 @@ const InfoPage = () => {
     setModal(true);
     setRecord({
       id: '',
-      expirationDate: new Date(),
       message: '',
       registerDate: new Date(),
-      days: 0,
-      image: false,
+      image: ''
     })
   };
 
@@ -55,7 +59,7 @@ const InfoPage = () => {
 
   const handleModalOk = () => {
     setLoading(true);
-    emitEvent(Constants.INFO_PAGE_SAVE, record.days, record.message, record.image);
+    emitEvent(Constants.INFO_PAGE_SAVE, record.message, record.image);
   };
 
   useEffect(() => {
@@ -79,12 +83,6 @@ const InfoPage = () => {
       render: (registerDate: Date) => formatDateTime(registerDate),
     },
     {
-      title: t('expiration'),
-      dataIndex: 'expirationDate',
-      key: 'expirationDate',
-      render: (expirationDate: Date) => formatDateTime(expirationDate),
-    },
-    {
       title: t('message'),
       dataIndex: 'message',
       key: 'message',
@@ -93,7 +91,7 @@ const InfoPage = () => {
       title: t('image'),
       dataIndex: 'image',
       key: 'image',
-      render: (image: boolean) => image ? t('yes') : t('no'),
+      render: (image?: string) => image ? t('yes') : t('no'),
     },
     {
       title: t('options'),
@@ -138,13 +136,6 @@ const InfoPage = () => {
       <Form layout='vertical'>
         <Row gutter={16}>
           <Col span={24}>
-            <Form.Item label={t('days')}>
-              <InputNumber value={record.days} onChange={(value) => setRecord({ ...record, days: value })} style={{ width: '100%' }} />
-            </Form.Item>
-          </Col>
-        </Row>
-        <Row gutter={16}>
-          <Col span={24}>
             <Form.Item label={t('message')}>
               <Input value={record.message} onChange={(e) => setRecord({ ...record, message: e.target.value })} style={{ width: '100%' }} />
             </Form.Item>
@@ -152,7 +143,9 @@ const InfoPage = () => {
         </Row>
         <Row gutter={16}>
           <Col span={24}>
-            <Checkbox checked={record.image} onChange={(e) => setRecord({ ...record, image: e.target.checked })}>{t('image')}</Checkbox>
+            <Form.Item label={t('image')}>
+              <Input value={record.image} onChange={(e) => setRecord({ ...record, image: e.target.value })} style={{ width: '100%' }} />
+            </Form.Item>
           </Col>
         </Row>
       </Form>

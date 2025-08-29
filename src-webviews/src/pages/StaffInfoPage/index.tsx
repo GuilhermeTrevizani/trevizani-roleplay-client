@@ -8,14 +8,13 @@ import { configureEvent, emitEvent, formatDateTime, formatValue, removeAccents }
 interface StaffInfo {
   id: string;
   registerDate: Date;
-  expirationDate: Date;
   character: string;
   posX: number;
   posY: number;
   posZ: number;
   dimension: number;
   message: string;
-  image: boolean;
+  image?: string;
 };
 
 const StaffInfoPage = () => {
@@ -71,12 +70,6 @@ const StaffInfoPage = () => {
       render: (registerDate: Date) => formatDateTime(registerDate),
     },
     {
-      title: t('expiration'),
-      dataIndex: 'expirationDate',
-      key: 'expirationDate',
-      render: (expirationDate: Date) => formatDateTime(expirationDate),
-    },
-    {
       title: t('character'),
       dataIndex: 'character',
       key: 'character',
@@ -102,7 +95,7 @@ const StaffInfoPage = () => {
       title: t('image'),
       dataIndex: 'image',
       key: 'image',
-      render: (image: boolean) => image ? t('yes') : t('no'),
+      render: (image?: string) => image ? t('yes') : t('no'),
     },
     {
       title: t('options'),
